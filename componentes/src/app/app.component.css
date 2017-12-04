@@ -1,0 +1,13 @@
+.item{
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+.cuadrado{
+    background-color: palegoldenrod;
+    height: 80px;
+    width: 80px;
+}
+.activo{
+    background-color: magenta;
+}

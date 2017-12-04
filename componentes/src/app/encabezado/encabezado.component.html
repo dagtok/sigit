@@ -1,0 +1,24 @@
+<ul>
+  <li>
+    <a [routerLink]="['lista-libros']">
+      Lista de libros
+    </a>
+  </li>
+  <li>
+      <a [routerLink]="['acerca-de']" routerLinkActive="activo">
+        Acerca de 
+      </a>
+  </li>
+</ul>
+
+<h1>Libros</h1>
+<button (click)="mostrarLista = !mostrarLista">Libros</button>
+
+<div class="misLibros" *ngIf="mostrarLista">
+  <h2>Mis libros</h2>
+  <ul *ngIf="librosSeleccionados.mostrarLibros()">
+    <li *ngFor="let libro of librosSeleccionados.mostrarLibros()">{{ libro.titulo }}</li>
+  </ul>
+</div>
+
+<h1>Club de libros</h1>
