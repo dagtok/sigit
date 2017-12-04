@@ -1,0 +1,46 @@
+/*div.container{
+    background-color: white;
+    box-shadow: 0px 3px 10px lightgray;
+}*/
+
+button>i.fa{
+    font-size: 25px
+}
+
+.acciones-producto{
+    font-size: 50px
+}
+
+.acciones-producto .validar{
+    background-color: green;
+    color: white;
+}
+.acciones-producto .rechazar{
+    background-color: red;
+    color: white;
+}
+
+.resumen-pedido{
+    /*background-color: #474ce2;*/
+    background: linear-gradient(-90deg, #e469f9, #905aed,#474ce2);
+    /*width: 100%;*/
+    color: white;
+    display: block;
+    padding: 40px;
+    /*min-height: 80px;*/
+}
+button.validar-solicitud{
+    background-color: white;
+    border: none;
+    color: #737373;
+    font-weight: bolder;
+    padding: 20px 30px;
+}
+.mostrar-detalle{
+    background-color: white;
+    border: none;
+}
+.nombre-atributo{
+    text-align: right;
+    font-weight: bold;
+}

@@ -8,20 +8,35 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ColoresComponent } from './colores/colores.component';
 import { SaludoComponent } from './saludo/saludo.component';
-import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { ListaDeLibrosComponent } from './lista-de-libros/lista-de-libros.component';
 import { LoginComponent } from './login/login.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
 import { LibrosSeleccionadosService } from './libros-seleccionados.service';
+import { SolicitudComponent } from './solicitud/solicitud.component';
+import { ArticuloComponent } from './articulo/articulo.component';
+import { DireccionComponent } from './direccion/direccion.component';
+import { FormatosComponent } from './formatos/formatos.component';
+import { FormatoEditarComponent } from './formato-editar/formato-editar.component';
+import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
+import { ArticuloRegistrarComponent } from './articulo-registrar/articulo-registrar.component';
 
 const rutasApp:Routes = [
-  { path:'lista-libros', component: ListaDeLibrosComponent },
-  { path:'acerca-de', component: AcercaDeComponent },
-  { path:'detalles/:libroId', component: DetallesComponent },
   { path:'', component: LoginComponent, pathMatch: 'full' },
-  { path:'**', redirectTo: 'acerca-de' }
+  { path:'lista-libros', component: ListaDeLibrosComponent },
+  { path:'detalles/:libroId', component: DetallesComponent },
+  
+  { path:'login', component: LoginComponent },
+  { path:'editar-formato', component: FormatoEditarComponent },
+  { path:'registrar-articulo', component: ArticuloRegistrarComponent },
+  { path:'formatos', component: FormatosComponent },
+  { path:'realizar-solicitud', component: SolicitudComponent },
+  { path:'solicitud/validar', component: SolicitudValidarComponent },
+  { path:'solicitud', component: FormatoEditarComponent },
+  { path:'direccion', component: DireccionComponent },
+  { path:'crear-articulo', component: ArticuloComponent },
+  { path:'**', redirectTo: 'realizar-solicitud' }
 ];
 
 @NgModule({
@@ -29,11 +44,17 @@ const rutasApp:Routes = [
     AppComponent,
     ColoresComponent,
     SaludoComponent,
-    AcercaDeComponent,
     EncabezadoComponent,
     ListaDeLibrosComponent,
     LoginComponent,
     DetallesComponent,
+    SolicitudComponent,
+    ArticuloComponent,
+    DireccionComponent,
+    FormatosComponent,
+    FormatoEditarComponent,
+    SolicitudValidarComponent,
+    ArticuloRegistrarComponent,
   ],
   imports: [
     RouterModule.forRoot(rutasApp),
