@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./solicitud-validar.component.css']
 })
 export class SolicitudValidarComponent implements OnInit {
-
   constructor() { }
-
+  
   ngOnInit() {
   }
-
 }

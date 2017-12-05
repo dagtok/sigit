@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
 import { LibrosSeleccionadosService } from './libros-seleccionados.service';
+import { SolicitudService } from './solicitud.service';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { DireccionComponent } from './direccion/direccion.component';
@@ -63,7 +64,8 @@ const rutasApp:Routes = [
     HttpModule
   ],
   providers: [ 
-    LibrosSeleccionadosService
+    LibrosSeleccionadosService,
+    SolicitudService
   ],
   bootstrap: [AppComponent]
 })
