@@ -22,12 +22,15 @@ import { FormatosComponent } from './formatos/formatos.component';
 import { FormatoEditarComponent } from './formato-editar/formato-editar.component';
 import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
 import { ArticuloRegistrarComponent } from './articulo-registrar/articulo-registrar.component';
+import { ModeloFormularioComponent } from './modelo-formulario/modelo-formulario.component';
+
 
 const rutasApp:Routes = [
   { path:'', component: LoginComponent, pathMatch: 'full' },
+  { path:'registrar-modelo', component: ModeloFormularioComponent },
+  
   { path:'lista-libros', component: ListaDeLibrosComponent },
   { path:'detalles/:libroId', component: DetallesComponent },
-  
   { path:'login', component: LoginComponent },
   { path:'editar-formato', component: FormatoEditarComponent },
   { path:'registrar-articulo', component: ArticuloRegistrarComponent },
@@ -56,6 +59,7 @@ const rutasApp:Routes = [
     FormatoEditarComponent,
     SolicitudValidarComponent,
     ArticuloRegistrarComponent,
+    ModeloFormularioComponent
   ],
   imports: [
     RouterModule.forRoot(rutasApp),

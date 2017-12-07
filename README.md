@@ -1,28 +1,28 @@
-# Angular-4-Esencial
+# SIGIT - SISTEMA DE GESTION PARA INSUMOS DE TICS
+Instalar el  proyecto con 
+npm install
+
+# Comandos
+generar un componente
+ng generate component NombreComponente
+
 
 RUTA DEL PROYECTO /Users/Maksita/Dropbox/localhost/ipn
 
 INSTALAR ANGULAR CLI de forma global
 npm install -g @angular/cli
 
-SISTEMA DE GESTION DE INSUMOS DE TICS DEL IPN
-SIGIT
-
 CREAR EL APP 
 ng new sigit
 
 # ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
-
-
 Un componente es una funcion de tipo decorador agrega mas comportamiento a una clase desde afuera de la clase 
 Debe ser declarada de forma inmediata antes que la clase
 
-INSTALAR BOOTSTRAP DENTRO DEL PROYECTO
+# INSTALAR BOOTSTRAP DENTRO DEL PROYECTO
 npm install --save bootstrap
 
-
-
-** PARTIDAS **
+# ** PARTIDAS **
 Administrar partidas
 	Registrar Partida
 	Eliminar partida
@@ -46,7 +46,7 @@ Registrar direcciónes
 Anexo tecnico
 
 
-Actualizar angular 
+Actualizar Angular 
 npm install --save-dev @angular/cli@latest
 
 ng new nombre-app

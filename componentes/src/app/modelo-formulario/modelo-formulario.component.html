@@ -1,0 +1,55 @@
+<div class="container">
+    <h1>--</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <pre>
+            {{ model | json}}
+        </pre>
+        <div class="form-group">
+          <label for="nombre">Nombre del Modelo</label>
+          <input type="text" class="form-control" id="nombre"
+                   required
+                   [(ngModel)]="model.nombre" name="nombre"
+                   #nombre="ngModel" #spy>
+            <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+              Nombre del articulo es requerido
+            </div>
+            <br>TODO: remove this: {{spy.className}}
+        </div>
+        
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+          <select class="form-control"  id="categoria"
+                  required
+                  [(ngModel)]="model.categoria" name="categoria">
+              <option *ngFor="let nombre_categoria of categorias" [value]="nombre_categoria">{{nombre_categoria}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="subcategoria">Subcategoria</label>
+            <select class="form-control"  id="subcategoria"
+                    required
+                    [(ngModel)]="model.subcategoria" name="subcategoria">
+                <option *ngFor="let nombre_subcategoria of subcategorias" [value]="nombre_subcategoria">{{nombre_subcategoria}}</option>
+            </select>
+        </div>
+
+        Propiedades
+        <button class="btn" (click)="agregarPropiedad()">Agregar</button>
+        <ul>
+          <li *ngFor="let propiedad of model.propiedades; let i = index;">
+              <input type="text" 
+              class="form-control"
+              required
+              name="propiedades{{i}}"
+              id="propiedades{{i}}"
+              [(ngModel)]="model.propiedades[i].atributo">
+              <button (click)="borrarPropiedad(i)">borrar</button>
+          </li>
+        </ul>
+        
+        <button type="button" class="btn btn-default" 
+          (click)="newHero(); heroForm.reset()"
+          [disabled]="!heroForm.form.valid">New Hero
+        </button>
+    </form>
+</div>
