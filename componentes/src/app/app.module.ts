@@ -2,8 +2,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Hacer peticiones POST y GET
+import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ColoresComponent } from './colores/colores.component';
@@ -15,13 +17,14 @@ import { DetallesComponent } from './detalles/detalles.component';
 
 import { LibrosSeleccionadosService } from './libros-seleccionados.service';
 import { SolicitudService } from './solicitud.service';
+import { CategoriaService } from './categoria.service';
+
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { DireccionComponent } from './direccion/direccion.component';
 import { FormatosComponent } from './formatos/formatos.component';
 import { FormatoEditarComponent } from './formato-editar/formato-editar.component';
 import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
-import { ArticuloRegistrarComponent } from './articulo-registrar/articulo-registrar.component';
 import { ModeloFormularioComponent } from './modelo-formulario/modelo-formulario.component';
 
 
@@ -33,7 +36,6 @@ const rutasApp:Routes = [
   { path:'detalles/:libroId', component: DetallesComponent },
   { path:'login', component: LoginComponent },
   { path:'editar-formato', component: FormatoEditarComponent },
-  { path:'registrar-articulo', component: ArticuloRegistrarComponent },
   { path:'formatos', component: FormatosComponent },
   { path:'realizar-solicitud', component: SolicitudComponent },
   { path:'solicitud/validar', component: SolicitudValidarComponent },
@@ -58,18 +60,18 @@ const rutasApp:Routes = [
     FormatosComponent,
     FormatoEditarComponent,
     SolicitudValidarComponent,
-    ArticuloRegistrarComponent,
     ModeloFormularioComponent
   ],
   imports: [
     RouterModule.forRoot(rutasApp),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [ 
     LibrosSeleccionadosService,
-    SolicitudService
+    SolicitudService,
+    CategoriaService
   ],
   bootstrap: [AppComponent]
 })

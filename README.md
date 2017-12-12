@@ -3,16 +3,17 @@ Instalar el  proyecto con
 npm install
 
 # Comandos
-generar un componente
+
+# Generar un nuevo componente
 ng generate component NombreComponente
 
 
 RUTA DEL PROYECTO /Users/Maksita/Dropbox/localhost/ipn
 
-INSTALAR ANGULAR CLI de forma global
+# INSTALAR ANGULAR CLI de forma global
 npm install -g @angular/cli
 
-CREAR EL APP 
+# Crear una nueva app
 ng new sigit
 
 # ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
@@ -189,3 +190,8 @@ ng serve
 
 <app-colores> </app-colores>
 <app-colores> </app-colores>
+
+
+
+#Crear un nuevo servicio 
+ng generate service categoria

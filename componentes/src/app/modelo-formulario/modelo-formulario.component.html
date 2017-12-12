@@ -1,9 +1,8 @@
 <div class="container">
-    <h1>--</h1>
+    <h1>Definir nuevo producto</h1>
+    
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-        <pre>
-            {{ model | json}}
-        </pre>
+        <pre>{{ model | json}}</pre>
         <div class="form-group">
           <label for="nombre">Nombre del Modelo</label>
           <input type="text" class="form-control" id="nombre"
@@ -13,15 +12,14 @@
             <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
               Nombre del articulo es requerido
             </div>
-            <br>TODO: remove this: {{spy.className}}
+            <!-- <br>TODO: remove this: {{spy.className}} -->
         </div>
-        
         <div class="form-group">
           <label for="categoria">Categoria</label>
           <select class="form-control"  id="categoria"
                   required
                   [(ngModel)]="model.categoria" name="categoria">
-              <option *ngFor="let nombre_categoria of categorias" [value]="nombre_categoria">{{nombre_categoria}}</option>
+              <option *ngFor="let categoria of categorias" [value]="categoria.nombre">{{categoria.nombre}}</option>
           </select>
         </div>
         <div class="form-group">
@@ -33,8 +31,11 @@
             </select>
         </div>
 
-        Propiedades
+        <h2>
+            Caracteristicas
+        </h2>
         <button class="btn" (click)="agregarPropiedad()">Agregar</button>
+        
         <ul>
           <li *ngFor="let propiedad of model.propiedades; let i = index;">
               <input type="text" 
@@ -42,8 +43,9 @@
               required
               name="propiedades{{i}}"
               id="propiedades{{i}}"
-              [(ngModel)]="model.propiedades[i].atributo">
-              <button (click)="borrarPropiedad(i)">borrar</button>
+              (ngModelChange)="enCambioDeAtributo($event, i)"
+              [(ngModel)]="model.propiedades[i].nombre">
+              <button (click)="borrarPropiedad(i)">Borrar</button>
           </li>
         </ul>
         
