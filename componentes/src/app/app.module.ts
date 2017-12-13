@@ -18,6 +18,7 @@ import { DetallesComponent } from './detalles/detalles.component';
 import { LibrosSeleccionadosService } from './libros-seleccionados.service';
 import { SolicitudService } from './solicitud.service';
 import { CategoriaService } from './categoria.service';
+import { SubcategoriaService } from './subcategoria.service';
 
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { ArticuloComponent } from './articulo/articulo.component';
@@ -42,7 +43,8 @@ const rutasApp:Routes = [
   { path:'solicitud', component: FormatoEditarComponent },
   { path:'direccion', component: DireccionComponent },
   { path:'crear-articulo', component: ArticuloComponent },
-  { path:'**', redirectTo: 'realizar-solicitud' }
+
+  { path:'**', redirectTo: 'crear-articulo' }
 ];
 
 @NgModule({
@@ -69,9 +71,10 @@ const rutasApp:Routes = [
     HttpClientModule
   ],
   providers: [ 
+    CategoriaService,
+    SubcategoriaService,
     LibrosSeleccionadosService,
-    SolicitudService,
-    CategoriaService
+    SolicitudService
   ],
   bootstrap: [AppComponent]
 })

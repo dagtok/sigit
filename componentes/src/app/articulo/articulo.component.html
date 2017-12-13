@@ -1,29 +1,58 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-6">
+      <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+              <select class="form-control"  id="categoria"
+                      required
+                      [(ngModel)]="articulo.categoria" name="categoria">
+                  <option *ngFor="let categoria of categorias" [value]="categoria.nombre">{{categoria.nombre}}</option>
+              </select>
+        </div>
+        <div class="form-group">
+                <label for="subcategoria">Subcategoria</label>
+                <select class="form-control"  id="subcategoria"
+                        required
+                        [(ngModel)]="articulo.subcategoria" name="subcategoria">
+                    <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.nombre">
+                        {{subcategoria.nombre}}
+                    </option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre del Modelo</label>
+            <input type="text" class="form-control" id="nombre"
+                         required
+                         [(ngModel)]="articulo.nombre" name="nombre"
+                         #nombre="ngModel" #spy>
+            <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+              Nombre del articulo es requerido
+            </div>
+            <!-- <br>TODO: remove this: {{spy.className}} -->
+        </div>
+      </form>
+    
       <h1>
-        Caracteristicas (3)
-        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+        Caracteristicas ({{ articulo.propiedades.length }})
       </h1>
       <div class="form-group row">
-          <div class="col-11">
-              <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
-          </div>
-          <div class="col-1">
-              <button class="btn">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-              </button>
+          <div class="col-11" *ngFor="let propiedad of articulo.propiedades; let i = index;">
+            <label for="nombre">{{ propiedad.nombre }}</label>
+              <input type="text" 
+              class="form-control"
+              required
+              name="{{ propiedad.nombre-db }}"
+              id="{{ propiedad.nombre-db }}"
+              (ngModelChange)="asignarValorDeAtributo($event, i)"
+              [(ngModel)]="propiedad.valor">
           </div>
       </div>
     </div>
-    <div class="col-6 text-center">
-      <h1>Registrar Producto</h1>
-      <h3>Vista previa</h3>
-      <div class="form-group row">
-        <span>Esto es una prueba</span>
-        <input class="form-control" type="text" disabled="disabled">
-      </div>
+    <div class="col-6">
+      <pre>
+        {{ articulo | json }}
+      </pre>
     </div>
   </div>
 </div>

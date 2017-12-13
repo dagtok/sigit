@@ -1,4 +1,9 @@
-import { Injectable } from '@angular/core';
+export class Categoria {
+    constructor(
+        public _id: number,
+        public nombre: string
+    ) {  }
+}import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SolicitudService {

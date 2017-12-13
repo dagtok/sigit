@@ -1,8 +1,9 @@
-export class Modelo {
+export class Articulo {
     constructor(
-        public id: number,
+        public _id: number,
+        public nombre: string,
         public categoria: string,
         public subcategoria: string,
         public propiedades:Array<object>
-    ) {  }
+    ){ }
 }
