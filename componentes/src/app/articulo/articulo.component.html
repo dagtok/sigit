@@ -38,12 +38,12 @@
       </h1>
       <div class="form-group row">
           <div class="col-11" *ngFor="let propiedad of articulo.propiedades; let i = index;">
-            <label for="nombre">{{ propiedad.nombre }}</label>
+            <label for="{{ propiedad.nombre }}">{{ propiedad.texto }}</label>
               <input type="text" 
               class="form-control"
               required
-              name="{{ propiedad.nombre-db }}"
-              id="{{ propiedad.nombre-db }}"
+              name="{{ propiedad.nombre }}"
+              id="{{ propiedad.nombre }}"
               (ngModelChange)="asignarValorDeAtributo($event, i)"
               [(ngModel)]="propiedad.valor">
           </div>

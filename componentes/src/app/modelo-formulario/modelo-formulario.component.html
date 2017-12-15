@@ -34,6 +34,7 @@
               required
               name="propiedades{{i}}"
               id="propiedades{{i}}"
+              (blur)="buscarAtributo(model.propiedades[i].nombre)"
               (ngModelChange)="enCambioDeAtributo($event, i)"
               [(ngModel)]="model.propiedades[i].nombre">
                 <button (click)="borrarPropiedad(i)">

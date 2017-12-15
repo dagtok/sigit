@@ -26,42 +26,42 @@ export class ArticuloComponent implements OnInit {
     }).closed;
 
     var propiedades = [
-      {
-        "nombre": "Capacidad",
-        "nombre-db": "capacidad",
-        "valor": null
-      },
-      {
-        "nombre": "Tecnología de grabación",
-        "nombre-db": "tecnologia-de-grabacion",
-        "valor": null
-      },
-      {
-        "nombre": "Velocidad de lectura",
-        "nombre-db": "velocidad-de-lectura",
-        "valor": null
-      },
-      {
-        "nombre": "Longitud de la cinta",
-        "nombre-db": "longitud-de-la-cinta",
-        "valor": null
-      },
-      {
-        "nombre": "Ancho de la cinta",
-        "nombre-db": "ancho-de-la-cinta",
-        "valor": null
-      },
-      {
-        "nombre": "Grosor de la cinta",
-        "nombre-db": "grosor-de-la-cinta",
-        "valor": null
-      },
-      {
-        "nombre": "Formato de soporte",
-        "nombre-db": "formato-de-soporte",
-        "valor": null
-      }
-    ];
+        {
+          "texto": "Capacidad",
+          "nombre": "capacidad",
+          "valor": null
+        },
+        {
+          "texto": "Tecnología de grabación",
+          "nombre": "tecnologia-de-grabacion",
+          "valor": null
+        },
+        {
+          "texto": "Velocidad de lectura",
+          "nombre": "velocidad-de-lectura",
+          "valor": null
+        },
+        {
+          "texto": "Longitud de la cinta",
+          "nombre": "longitud-de-la-cinta",
+          "valor": null
+        },
+        {
+          "texto": "Ancho de la cinta",
+          "nombre": "ancho-de-la-cinta",
+          "valor": null
+        },
+        {
+          "texto": "Grosor de la cinta",
+          "nombre": "grosor-de-la-cinta",
+          "valor": null
+        },
+        {
+          "texto": "Formato de soporte",
+          "nombre": "formato-de-soporte",
+          "valor": null
+        }
+      ];
 
     this.articulo = new Articulo(42,'',"CINTA DE DATOS","CINTA DE DATOS",propiedades);
    }
@@ -69,7 +69,21 @@ export class ArticuloComponent implements OnInit {
   ngOnInit() {
   }
 
-  asignarValorDeAtributo(_valor_atributo : string, _posicion:number ) {  
+  asignarValorDeAtributo(_valor_atributo : string, _posicion:number ) {
     this.articulo.propiedades[_posicion]["valor"] = _valor_atributo;
+    this.articulo.propiedades[_posicion]["token"] = this.generarToken( _valor_atributo );
+  }
+
+  generarToken( _valor_atributo : string ){
+    return _valor_atributo.replace(/[^\w\s]/gi, '').toLowerCase().replace(/ /g,'').replace(/[aeiou]/ig,'');
+    // verificar cuando replazar numeros  .replace(/[0123456789]/ig,'') por las medidas como 10GB
+  }
+  agregarToken(){
+    //buscar si existe token
+    // Si no existe hacer push 
+  }
+  agregarAtributo(){
+    //buscar si existe token
+    // Si no existe hacer push 
   }
 }

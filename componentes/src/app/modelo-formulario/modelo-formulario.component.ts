@@ -12,8 +12,9 @@ export class ModeloFormularioComponent implements OnInit {
   
   categorias:Object;
   subcategorias:Object;
-  propiedades:Array<Object>
-  model:Modelo
+  propiedades:Array<Object>;
+  atributos:Array<String>;
+  model:Modelo;
 
   constructor(public categoriasServicio:CategoriaService, public subcategoriasServicio:SubcategoriaService) {
     this.categoriasServicio.listar().subscribe(data => {
@@ -23,7 +24,17 @@ export class ModeloFormularioComponent implements OnInit {
     this.categoriasServicio.listar().subscribe(data => {
       this.subcategorias = data;
     }).closed;
-
+    this.atributos = [
+      'Capacidad',
+      'Tecnología de grabación',
+      'Velocidad de lectura',
+      'Longitud de cinta',
+      'Ancho de cinta',
+      'Grosor de cinta',
+      'Formato de soporte',
+      'Vida del archivo',
+      'Peso'
+    ];
     this.propiedades = [
       { "nombre":'Capacidad'},
       { "nombre":'Tecnología de grabación'},
@@ -35,7 +46,7 @@ export class ModeloFormularioComponent implements OnInit {
       { "nombre":'Vida del archivo'},
       { "nombre":'Peso'},
     ];
-    this.model = new Modelo(42, 'CINTA DE DATOS', '',this.propiedades);
+    this.model = new Modelo(42, 'CINTA DE DATOS', '', this.atributos, this.propiedades);
   }
 
   ngOnInit() { }
@@ -48,7 +59,7 @@ export class ModeloFormularioComponent implements OnInit {
   get diagnostic() { return JSON.stringify(this.model); }
 
   newHero() {
-      this.model = new Modelo(42, '', '',null);
+      this.model = new Modelo(42, '', '',null,null);
   }
 
   enCambioDeAtributo(_valor_atributo : string, _posicion:number ) {  
@@ -69,7 +80,13 @@ export class ModeloFormularioComponent implements OnInit {
 
     this.propiedades[_posicion]["nombre-db"] = r;
   }
-
+  buscarAtributo(_valor){
+    console.log("Buscando"+_valor);
+    if((this.model.atributos.indexOf(_valor) > -1) == false){ // Si el atributo no exite 
+      console.log("Valor no encontrado");
+      this.model.atributos.push(_valor)
+    }
+  }
   agregarPropiedad(){
     var nuevo_atributo = {
       "nombre":null,
