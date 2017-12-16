@@ -63,10 +63,14 @@ export class ArticuloComponent implements OnInit {
         }
       ];
 
-    this.articulo = new Articulo(42,'',"CINTA DE DATOS","CINTA DE DATOS",propiedades);
+    this.articulo = new Articulo(42,'Este es un nombre','este-es-un-nombre',"CINTA DE DATOS","KIT DE ACTUALIZACIÓN PARA PC",propiedades);
    }
 
   ngOnInit() {
+  }
+
+  asignarTokenAlNombre(_valor_atributo : string) {
+    this.articulo.token = this.generarToken( _valor_atributo );
   }
 
   asignarValorDeAtributo(_valor_atributo : string, _posicion:number ) {
