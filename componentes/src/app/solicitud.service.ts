@@ -19,11 +19,7 @@ export class SolicitudService {
   }
   
   mostrarArticulos(){
-    if(this.articulos.length > 0){
-      return this.articulos;
-    } else {
-      return false;
-    }
+    /**/
   }
 
 }

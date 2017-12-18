@@ -1,6 +1,6 @@
 export class Modelo {
     constructor(
-        public id: number,
+        public _id: number,
         public categoria: string,
         public subcategoria: string,
         public atributos:Array<String>,

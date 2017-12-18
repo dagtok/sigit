@@ -15,7 +15,6 @@ import { ListaDeLibrosComponent } from './lista-de-libros/lista-de-libros.compon
 import { LoginComponent } from './login/login.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
-import { LibrosSeleccionadosService } from './libros-seleccionados.service';
 import { SolicitudService } from './solicitud.service';
 import { CategoriaService } from './categoria.service';
 import { SubcategoriaService } from './subcategoria.service';
@@ -73,7 +72,6 @@ const rutasApp:Routes = [
   providers: [ 
     CategoriaService,
     SubcategoriaService,
-    LibrosSeleccionadosService,
     SolicitudService
   ],
   bootstrap: [AppComponent]

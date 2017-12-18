@@ -18,11 +18,13 @@ export class CategoriaService {
   }
   
   mostrarArticulos(){
+    /*
     if(this.resultado.length > 0){
       return this.resultado;
     } else {
       return false;
     }
+    */
   }
 
   public crear(categoria:Categoria){

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LibrosSeleccionadosService } from '../libros-seleccionados.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -8,9 +7,7 @@ import { LibrosSeleccionadosService } from '../libros-seleccionados.service';
 })
 export class EncabezadoComponent implements OnInit {
 
-  constructor(public librosSeleccionados:LibrosSeleccionadosService) {
-    
-   }
+  constructor() {}
 
   ngOnInit() {
   }
