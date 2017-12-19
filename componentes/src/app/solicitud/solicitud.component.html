@@ -13,107 +13,227 @@
           </table>
       </div>
       <div class="col-12">
+        <h1>
+            ERRORES
+        </h1>
         <pre>
-            <pre>
-              {{ errorHttp | json }}
-            </pre>
-            <div class="alert alert-warning" *ngIf="errorHttp">
-              <h1>Error</h1>
-            </div>
+            {{ productos | json }}
         </pre>
+
+        <div class="alert alert-warning" *ngIf="errorHttp">
+              <h1>Error</h1>
+              <pre>
+                {{ errorHttp | json }}
+              </pre>
+        </div>
+        <div class="row">
+                "_id": 42,
+                "nombre": "Este es un nombre",
+                "token": "este-es-un-nombre",
+                "categoria": "CINTA DE DATOS",
+                "subcategoria": "KIT DE ACTUALIZACIÓN PARA PC",
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- <input class="form-control" type="text" placeholder="Buscar por nombre o categoria"> -->
+                        <div id="busqueda">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="consulta form-control form-control-lg" placeholder="Buscar por nombre o categoria" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h3>Categoria</h3>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <div class="articulo">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="articulo">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="articulo">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="articulo">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h3>Subcategoria</h3>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="col-md-12 text-center">
+                        <h3>Producto</h3>
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">                        
+                            <div class="col-4 text-center" *ngFor="let producto of productos">
+                                <div class="producto">
+                                    {{ producto.nombre }}
+                                    <a [routerLink]="['producto/detalles' , producto.id ]">  {{producto.nombre}}  </a>
+                                    <br>
+                                    <button (click)="agregarLibro(producto)">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    </button>
+                                    <button data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <input class="form-control" type="text" placeholder="Buscar por nombre o categoria"> -->
+                            <div id="busqueda">
+                                <div class="input-group col-md-12">
+                                    <input type="text" class="consulta form-control form-control-lg" placeholder="Buscar por nombre o categoria" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" type="button">
+                                            <span class="fa fa-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h3>Categoria</h3>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="articulo">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <h3>Producto</h3>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">                        
+                                <div class="col-4 text-center" *ngFor="let articulo of articulos">
+                                    <div class="articulo">
+                                        {{ articulo.titulo }}
+                                        <a [routerLink]="['/detalles' , articulo.id ]">  {{articulo.titulo}}  </a>
+                                        <br>
+                                        <button (click)="agregarLibro(articulo)">
+                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="resumen-pedido">
+                        <h3 class="text-center">Solicitud</h3>
+                        <hr>
+                        <table *ngIf="solicitud.mostrarArticulos()">
+                            <tr *ngFor="let articulo of solicitud.mostrarArticulos()">
+                                <td width="70%">
+                                  {{ articulo.titulo }}
+                                </td>
+                                <td width="30%">
+                                    <input class="form-control" type="number" step="1">
+                                    <button class="btn">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="btn terminar-solicitud">Terminar Solicitud</button>
+                    </div>
+                </div>
+        </div>
+        
       </div>
-      <div class="col-md-8">
-          <div class="row">
-              <div class="col-12">
-                  <!-- <input class="form-control" type="text" placeholder="Buscar por nombre o categoria"> -->
-                  <div id="busqueda">
-                      <div class="input-group col-md-12">
-                          <input type="text" class="consulta form-control form-control-lg" placeholder="Buscar por nombre o categoria" />
-                          <span class="input-group-btn">
-                              <button class="btn btn-danger" type="button">
-                                  <span class="fa fa-search"></span>
-                              </button>
-                          </span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-12">
-                  <div class="row">
-                      <div class="col-md-12 text-center">
-                          <h3>Categoria</h3>
-                          <hr>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-12">
-                  <div class="row">
-                      <div class="col-md-3 text-center">
-                          <div class="articulo">
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </div>
-                      </div>
-                      <div class="col-md-3 text-center">
-                          <div class="articulo">
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </div>
-                      </div>
-                      <div class="col-md-3 text-center">
-                          <div class="articulo">
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </div>
-                      </div>
-                      <div class="col-md-3 text-center">
-                          <div class="articulo">
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-12 text-center">
-                  <h3>Producto</h3>
-                  <hr>
-              </div>
-              <div class="col-12">
-                  <div class="row">                        
-                      <div class="col-4 text-center" *ngFor="let articulo of articulos">
-                          <div class="articulo">
-                              {{ articulo.titulo }}
-                              <a [routerLink]="['/detalles' , articulo.id ]">  {{articulo.titulo}}  </a>
-                              <br>
-                              <button (click)="agregarLibro(articulo)">
-                                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                              </button>
-                              <button data-toggle="modal" data-target="#exampleModal">
-                                  <i class="fa fa-address-card-o" aria-hidden="true"></i>
-                              </button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="resumen-pedido">
-              <h3 class="text-center">Solicitud</h3>
-              <hr>
-              <table *ngIf="solicitud.mostrarArticulos()">
-                  <tr *ngFor="let articulo of solicitud.mostrarArticulos()">
-                      <td width="70%">
-                        {{ articulo.titulo }}
-                      </td>
-                      <td width="30%">
-                          <input class="form-control" type="number" step="1">
-                          <button class="btn">
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>
-                          </button>
-                      </td>
-                  </tr>
-              </table>
-              <button class="btn terminar-solicitud">Terminar Solicitud</button>
-          </div>
-      </div>
+      
   </div>
 </div>
 

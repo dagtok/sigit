@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { ColoresComponent } from './colores/colores.component';
 import { SaludoComponent } from './saludo/saludo.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
-import { ListaDeLibrosComponent } from './lista-de-libros/lista-de-libros.component';
 import { LoginComponent } from './login/login.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
@@ -29,21 +28,21 @@ import { ModeloFormularioComponent } from './modelo-formulario/modelo-formulario
 
 
 const rutasApp:Routes = [
-  { path:'', component: LoginComponent, pathMatch: 'full' },
-  { path:'registrar-modelo', component: ModeloFormularioComponent },
+  // { path:'', component: LoginComponent, pathMatch: 'full' },
+  { path:'modelo/registrar', component: ModeloFormularioComponent },
+  { path:'articulo/registrar', component: ArticuloComponent },
+  // { path:'login', component: LoginComponent },
   
-  { path:'lista-libros', component: ListaDeLibrosComponent },
+  { path:'solicitud/validar', component: SolicitudValidarComponent },
+  { path:'solicitud/registrar', component: SolicitudComponent },
+  
   { path:'detalles/:libroId', component: DetallesComponent },
-  { path:'login', component: LoginComponent },
   { path:'editar-formato', component: FormatoEditarComponent },
   { path:'formatos', component: FormatosComponent },
-  { path:'realizar-solicitud', component: SolicitudComponent },
-  { path:'solicitud/validar', component: SolicitudValidarComponent },
+  
   { path:'solicitud', component: FormatoEditarComponent },
   { path:'direccion', component: DireccionComponent },
-  { path:'crear-articulo', component: ArticuloComponent },
-
-  { path:'**', redirectTo: 'crear-articulo' }
+  { path:'**', redirectTo: 'solicitud/registrar' }
 ];
 
 @NgModule({
@@ -52,7 +51,6 @@ const rutasApp:Routes = [
     ColoresComponent,
     SaludoComponent,
     EncabezadoComponent,
-    ListaDeLibrosComponent,
     LoginComponent,
     DetallesComponent,
     SolicitudComponent,
