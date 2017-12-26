@@ -1,22 +1,30 @@
-import { RouterModule, Routes } from '@angular/router';
-
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-// Hacer peticiones POST y GET
-import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-// import { HttpModule } from '@angular/http';
+import { FormsModule }    from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
+import { AuthGuard } from './_guards/index';
+import { JwtInterceptor } from './_helpers/index';
+import { AlertService, 
+         AuthenticationService, 
+         UserService,
+         SolicitudService,
+         CategoriaService,
+         SubcategoriaService
+        } from './_services/index';
+import { AlertComponent } from './_directives/index';
+
+import { AppComponent }  from './app.component';
+
+
+
+import { HomeComponent } from './home/index';
+import { LoginComponent } from './login/index';
+import { RegisterComponent } from './register/index';
 import { ColoresComponent } from './colores/colores.component';
 import { SaludoComponent } from './saludo/saludo.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
-import { LoginComponent } from './login/login.component';
 import { DetallesComponent } from './detalles/detalles.component';
-
-import { SolicitudService } from './solicitud.service';
-import { CategoriaService } from './categoria.service';
-import { SubcategoriaService } from './subcategoria.service';
 
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { ArticuloComponent } from './articulo/articulo.component';
@@ -26,52 +34,53 @@ import { FormatoEditarComponent } from './formato-editar/formato-editar.componen
 import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
 import { ModeloFormularioComponent } from './modelo-formulario/modelo-formulario.component';
 
-
-const rutasApp:Routes = [
-  // { path:'', component: LoginComponent, pathMatch: 'full' },
-  { path:'modelo/registrar', component: ModeloFormularioComponent },
-  { path:'articulo/registrar', component: ArticuloComponent },
-  // { path:'login', component: LoginComponent },
-  
-  { path:'solicitud/validar', component: SolicitudValidarComponent },
-  { path:'solicitud/registrar', component: SolicitudComponent },
-  
-  { path:'detalles/:libroId', component: DetallesComponent },
-  { path:'editar-formato', component: FormatoEditarComponent },
-  { path:'formatos', component: FormatosComponent },
-  
-  { path:'solicitud', component: FormatoEditarComponent },
-  { path:'direccion', component: DireccionComponent },
-  { path:'**', redirectTo: 'solicitud/registrar' }
-];
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers/index';
+import { routing } from './app.routing';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ColoresComponent,
-    SaludoComponent,
-    EncabezadoComponent,
-    LoginComponent,
-    DetallesComponent,
-    SolicitudComponent,
-    ArticuloComponent,
-    DireccionComponent,
-    FormatosComponent,
-    FormatoEditarComponent,
-    SolicitudValidarComponent,
-    ModeloFormularioComponent
-  ],
-  imports: [
-    RouterModule.forRoot(rutasApp),
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [ 
-    CategoriaService,
-    SubcategoriaService,
-    SolicitudService
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        routing
+    ],
+    declarations: [
+      AppComponent,
+      AlertComponent,
+      HomeComponent,
+      LoginComponent,
+      RegisterComponent,
+      ColoresComponent,
+      SaludoComponent,
+      EncabezadoComponent,
+      DetallesComponent,
+      SolicitudComponent,
+      ArticuloComponent,
+      DireccionComponent,
+      FormatosComponent,
+      FormatoEditarComponent,
+      SolicitudValidarComponent,
+      ModeloFormularioComponent
+    ],
+    providers: [
+      SolicitudService,
+      // CategoriaService,
+      // SubcategoriaService,
+        AuthGuard,
+        AlertService,
+        AuthenticationService,
+        UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        },
+
+        // provider used to create fake backend
+        fakeBackendProvider
+    ],
+    bootstrap: [AppComponent]
 })
+
 export class AppModule { }

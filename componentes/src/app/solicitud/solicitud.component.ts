@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { SolicitudService } from '../solicitud.service';
+
+import { SolicitudService } from '../_services/index';
 
 @Component({
-  selector: 'app-solicitud',
+  // selector: 'app-solicitud',
+  moduleId: module.id.toString(),
   templateUrl: './solicitud.component.html',
   styleUrls: ['./solicitud.component.css']
 })
+
 export class SolicitudComponent implements OnInit {
 
   productos:Object;
-  errorHttp: Boolean;
+  errorHttp:Boolean;
   cargando:Boolean;
 
   constructor(public solicitudServicio:SolicitudService) {

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { CategoriaService } from '../categoria.service'; // Servicio para gestion de categorias de productos
-import { SubcategoriaService } from '../subcategoria.service';
-
-import { Articulo } from '../articulo';
+// Servicio para gestion de categorias de productos
+import { CategoriaService,SubcategoriaService } from '../_services/index';
+import { Articulo } from '../_models/index';
 
 @Component({
   selector: 'app-articulo',
@@ -64,7 +63,7 @@ export class ArticuloComponent implements OnInit {
       ];
 
     this.articulo = new Articulo(42,'Este es un nombre','este-es-un-nombre',"CINTA DE DATOS","KIT DE ACTUALIZACIÓN PARA PC",propiedades);
-   }
+  }
 
   ngOnInit() {
   }

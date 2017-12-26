@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Subcategoria } from './subcategoria';
+import { Subcategoria } from '../_models/index';
 
 @Injectable()
 export class SubcategoriaService {

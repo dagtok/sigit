@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Modelo } from '../modelo';
-import { CategoriaService } from '../categoria.service'; // Servicio para gestion de categorias de productos
-import { SubcategoriaService } from '../subcategoria.service';
+import { Modelo } from '../_models/index';
+import { CategoriaService,SubcategoriaService } from '../_services/index';
 
 @Component({
   selector: 'app-modelo-formulario',

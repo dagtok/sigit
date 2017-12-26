@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Categoria } from './categoria';
+import { Categoria } from '../_models/index';
 
 @Injectable()
 export class SolicitudService {
