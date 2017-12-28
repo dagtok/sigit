@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Modelo } from '../_models/index';
-import { CategoriaService,SubcategoriaService } from '../_services/index';
+import { CategoriaService, SubcategoriaService } from '../_services/index';
 
 @Component({
-  selector: 'app-modelo-formulario',
+  // selector: 'app-modelo-formulario',
+  moduleId: module.id.toString(),
   templateUrl: './modelo-formulario.component.html',
   styleUrls: ['./modelo-formulario.component.css']
 })
-export class ModeloFormularioComponent implements OnInit {
-  
+
+export class ModeloFormularioComponent implements OnInit {  
   categorias:Object;
   subcategorias:Object;
   propiedades:Array<Object>;
@@ -16,7 +18,7 @@ export class ModeloFormularioComponent implements OnInit {
   model:Modelo;
 
   constructor(public categoriasServicio:CategoriaService, public subcategoriasServicio:SubcategoriaService) {
-    
+
     this.cargarCategorias();
     /*
     this.atributos = [

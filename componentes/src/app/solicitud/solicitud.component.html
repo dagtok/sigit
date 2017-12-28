@@ -1,330 +1,230 @@
-<div class="container">
-  <div class="row">
-      <div class="col-md-12">
-          <table>
-              <td>
-                  <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                  alt="">
-              </td>
-              <td>
-                  <h1>ESCUELA SUPERIOR DE COMPUTO</h1>
-                  <h2>RESPONSABLE DE LA UDI</h2>
-              </td>
-          </table>
-      </div>
-      <div class="col-12">
+<div class="row realizar-solicitud">
+    <div class="col-12">
         <h1>
-            ERRORES
+            Realizar Solicitud
         </h1>
-        <pre>
-            {{ productos | json }}
-        </pre>
-
+        <!--
+            <p>PRODUCTOS</p>
+            <pre>
+            {{ catalogoProductos | json }}
+            </pre>
+        -->
         <div class="alert alert-warning" *ngIf="errorHttp">
-              <h1>Error</h1>
-              <pre>
+            <h1>Error</h1>
+            <pre>
                 {{ errorHttp | json }}
-              </pre>
+            </pre>
         </div>
+        <!-- 
+         -->
+    </div>
+    <div class="col-6">
         <div class="row">
-                "_id": 42,
-                "nombre": "Este es un nombre",
-                "token": "este-es-un-nombre",
-                "categoria": "CINTA DE DATOS",
-                "subcategoria": "KIT DE ACTUALIZACIÓN PARA PC",
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- <input class="form-control" type="text" placeholder="Buscar por nombre o categoria"> -->
-                        <div id="busqueda">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="consulta form-control form-control-lg" placeholder="Buscar por nombre o categoria" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class="fa fa-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
+            <!-- BUSQUEDA -->
+            <div class="col-12">
+                <h4>
+                    Catalogo de Productos
+                </h4>
+                <hr>
+                <h4 class="titulo-seccion">
+                    1. Ingresa nombre o categoria del producto a buscar.
+                </h4>
+                <div id="busqueda">
+                    <div class="input-group col-md-12">
+                        <input id="client-search" type="text" class="consulta form-control form-control-lg" placeholder="Buscar por nombre o categoria"
+                            autofocus />
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
+            </div>
+            <!-- CATEGORIA
                         <div class="row">
-                            <div class="col-md-12 text-center">
-                                <h3>Categoria</h3>
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-3 text-center">
-                                <div class="articulo">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="articulo">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="articulo">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="articulo">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
+                        
+                        <div class="col-12">
                             <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h3>Subcategoria</h3>
+                                <div class="col-md-12">
+                                    <h4>Que pertenezcan a la categoria...</h4>
                                     <hr>
                                 </div>
                             </div>
+                            
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <div class="articulo">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <div class="articulo">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <div class="articulo">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <div class="articulo">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
-                    <div class="col-md-12 text-center">
-                        <h3>Producto</h3>
-                        <hr>
-                    </div>
-                    <div class="col-12">
-                        <div class="row">                        
-                            <div class="col-4 text-center" *ngFor="let producto of productos">
-                                <div class="producto">
-                                    {{ producto.nombre }}
-                                    <a [routerLink]="['producto/detalles' , producto.id ]">  {{producto.nombre}}  </a>
-                                    <br>
-                                    <button (click)="agregarLibro(producto)">
-                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                    </button>
-                                    <button data-toggle="modal" data-target="#exampleModal">
-                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    -->
+            <!-- PRODUCTOS -->
+            <div class="col-md-12">
+                <hr>
+                <h4 class="titulo-seccion">
+                    2. Elige los articulos que deseas agregar en tu pedido.
+                </h4>
+                <!--
+                    *ngIf="(productos.length > 0 && terminoDeBusqueda.length > 0)" 
+                -->
+                <p>
+                    {{ catalogoProductos.length }} articulos del catalogo que contienen la palabra "{{ terminoDeBusqueda }}" en el nombre
+                </p>
+                <div class="row">
+                    <div class="col-6 text-center" *ngFor="let producto of catalogoProductos; let i = index;">
+                        <div class="articulo">
+                            <a [routerLink]="['producto/detalles' , producto.id ]"> {{producto.nombre}} </a>
+                            <br>
+                            <button (click)="mostrarDetalleArticulo(producto, i)" data-toggle="modal" data-target="#exampleModal">
+                                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                            </button>
+                            <br>
+                            <button class="btn" (click)="agregarArticuloAlCarrito(producto)" data-toggle="tooltip" title="Hooray!">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Agregar a pedido
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- <input class="form-control" type="text" placeholder="Buscar por nombre o categoria"> -->
-                            <div id="busqueda">
-                                <div class="input-group col-md-12">
-                                    <input type="text" class="consulta form-control form-control-lg" placeholder="Buscar por nombre o categoria" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-danger" type="button">
-                                            <span class="fa fa-search"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <h3>Categoria</h3>
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="articulo">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <h3>Producto</h3>
-                            <hr>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">                        
-                                <div class="col-4 text-center" *ngFor="let articulo of articulos">
-                                    <div class="articulo">
-                                        {{ articulo.titulo }}
-                                        <a [routerLink]="['/detalles' , articulo.id ]">  {{articulo.titulo}}  </a>
-                                        <br>
-                                        <button (click)="agregarLibro(articulo)">
-                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                        </button>
-                                        <button data-toggle="modal" data-target="#exampleModal">
-                                            <i class="fa fa-address-card-o" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="resumen-pedido">
-                        <h3 class="text-center">Solicitud</h3>
-                        <hr>
-                        <table *ngIf="solicitud.mostrarArticulos()">
-                            <tr *ngFor="let articulo of solicitud.mostrarArticulos()">
-                                <td width="70%">
-                                  {{ articulo.titulo }}
-                                </td>
-                                <td width="30%">
-                                    <input class="form-control" type="number" step="1">
-                                    <button class="btn">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                        <button class="btn terminar-solicitud">Terminar Solicitud</button>
-                    </div>
-                </div>
         </div>
-        
-      </div>
-      
-  </div>
+    </div>
+    <div class="col-6">
+        <div class="resumen-pedido">
+            <h4 class="text-center">
+                Tu solicitud
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                ({{ solicitudServicio.articulosCarrito.length }})
+            </h4>
+            <hr>
+            <div *ngIf="solicitudServicio.articulosCarrito.length > 0">
+                <table class="table">
+                    <tr *ngFor="let articulo of solicitudServicio.articulosCarrito; let i = index;">
+                        <td width="5%">
+                            <button class="btn eliminar-producto" (click)="eliminarProductoCarrito(i)">
+                                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                        <td width="70%">
+                            {{ articulo.nombre }}
+                        </td>
+                        <td width="25%">
+                            <button class="btn" (click)="sumarArticuloACarrito(i)">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                            <input class="form-control" type="number" step="1" [(ngModel)]="articulo.cantidad" min="1">
+                            <button class="btn" (click)="restarArticuloACarrito(i)">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <button class="btn terminar-solicitud">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Completar Solicitud
+                </button>
+            </div>
+            <div class="text-center" *ngIf="solicitudServicio.articulosCarrito.length == 0">
+                Sin articulos en tu pedido
+                <br>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div>
-                  <div class="row">
-                      <div class="col-12">
-                          <div class="row cabecera-detalle-producto">
-                              <div class="col-12 text-center">
-                                  <h3>Capacidad: 800 GB con compresión 2:1 admitido</h3>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-12">
-                          <table class="table">
-                              <tr>
-                                  <td class="atributo" align="right">Tecnología de grabación</td>
-                                  <td> LTO-3 Ultrium</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Velocidad de lectura</td>
-                                  <td> 120 MB/S</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Longitud de cinta</td>
-                                  <td> 680 m</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Ancho de cinta</td>
-                                  <td> 12.65 mm</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Grosor de cinta</td>
-                                  <td> 8.0 μm</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Formato de soporte</td>
-                                  <td> Regrabable</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Vida del archivo</td>
-                                  <td> 30 años</td>
-                              </tr>
-                              <tr>
-                                  <td class="atributo" align="right">Peso</td>
-                                  <td> 270 gr.</td>
-                              </tr>
-                              <tr>
-                          </table>
-                      </div>
-                      <div class="col-12">
-                          <div class="row">
-                              <div class="col-6">
-                                  <button class="btn">
-                                      <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                      Anterior
-                                  </button>
-                                  <button class="btn">
-                                      <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                      Siguiente
-                                  </button>
-                              </div>
-                              <div class="col-6">
-                                  Agregar
-                                  <input class="form-control" type="number" placeholder="CANTIDAD" step="1">
-                                  <div class="solicitar-producto text-center">
-                                      <button class="btn">
-                                          <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                          Agregar al pedido
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-      </div>
-  </div>
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" *ngIf="detalleArticulo">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">
+                    {{ detalleArticulo.nombre }} - {{ detalleArticulo.categoria }} - {{ detalleArticulo.subcategoria }}
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table">
+                                <tr *ngFor="let propiedad of detalleArticulo.propiedades; let i = index;">
+                                    <td class="atributo" align="right">{{ propiedad.texto }}</td>
+                                    <td>
+                                        {{ propiedad.valor }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="d-flex justify-content-start mb-3">
+                                        <div class="p-2">
+                                            <button class="btn">
+                                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                Anterior
+                                            </button>
+                                        </div>
+                                        <div class="p-2">
+                                            <button class="btn">
+                                                Siguiente
+                                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-center">Agregar</p>
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <div class="p-2">
+                                            <button class="btn" (click)="eliminaProductoDetalleArticulo()">
+                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="p-2">
+                                            <input class="form-control" type="number" placeholder="CANTIDAD" [(ngModel)]="detalleArticulo.cantidad" min="1" step="1">
+                                        </div>
+                                        <div class="p-2">
+                                            <button class="btn" (click)="agregaProductoDetalleArticulo()">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            Agregar al pedido
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Atras</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,31 +1,29 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, 
-         AuthenticationService, 
-         UserService,
-         SolicitudService,
-         CategoriaService,
-         SubcategoriaService
-        } from './_services/index';
+import {
+    AlertService,
+    AuthenticationService,
+    UserService,
+    SolicitudService,
+    CategoriaService,
+    SubcategoriaService
+} from './_services/index';
 import { AlertComponent } from './_directives/index';
 
-import { AppComponent }  from './app.component';
-
-
+import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
-import { ColoresComponent } from './colores/colores.component';
-import { SaludoComponent } from './saludo/saludo.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
-import { DetallesComponent } from './detalles/detalles.component';
 
+// Faltan de revisar
+import { DetallesComponent } from './detalles/detalles.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { DireccionComponent } from './direccion/direccion.component';
@@ -46,27 +44,25 @@ import { routing } from './app.routing';
         routing
     ],
     declarations: [
-      AppComponent,
-      AlertComponent,
-      HomeComponent,
-      LoginComponent,
-      RegisterComponent,
-      ColoresComponent,
-      SaludoComponent,
-      EncabezadoComponent,
-      DetallesComponent,
-      SolicitudComponent,
-      ArticuloComponent,
-      DireccionComponent,
-      FormatosComponent,
-      FormatoEditarComponent,
-      SolicitudValidarComponent,
-      ModeloFormularioComponent
+        AppComponent,
+        AlertComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
+        EncabezadoComponent,
+        DetallesComponent,
+        SolicitudComponent,
+        ArticuloComponent,
+        DireccionComponent,
+        FormatosComponent,
+        FormatoEditarComponent,
+        SolicitudValidarComponent,
+        ModeloFormularioComponent
     ],
     providers: [
-      SolicitudService,
-      // CategoriaService,
-      // SubcategoriaService,
+        SolicitudService,
+        CategoriaService,
+        SubcategoriaService,
         AuthGuard,
         AlertService,
         AuthenticationService,

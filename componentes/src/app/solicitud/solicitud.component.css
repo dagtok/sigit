@@ -1,6 +1,8 @@
-body{
-    background-color: #f8f8f8;
+.realizar-solicitud{
+    padding-top: 30px;
+    padding-bottom: 80px;
 }
+
 /*CUSTOM SEARCH BOX*/
 #busqueda {
     margin:0;
@@ -9,12 +11,7 @@ body{
 }
 
 #busqueda .consulta {
-    padding-right: 3px;
-    padding-right: 4px \9;
-    padding-left: 3px;
-    padding-left: 4px \9;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
+    padding: 20px;
     margin-bottom: 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -46,8 +43,9 @@ div.container>div.row{
 }
 div.resumen-pedido{
     border: 2px solid #e9eaea;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
+    border-top: 5px solid #68124a;
 }
 .terminar-solicitud{
     background-color: #68124a;
@@ -66,23 +64,22 @@ div.resumen-pedido{
     min-height: 100px;
 }
 .articulo>button{
-    background-color: transparent;
+    background-color: #c771a9;
+    border: none;
+    color: white;
 }
-/*.detalle-articulo{
-    border: 1px solid #e9eaea;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 14px;
-}*/
+/*
 div.articulo:hover{
     border: none;
     background-color: #75435a;
     color: white;
 }
+
 div.articulo:hover button{
     background-color: white;
     cursor: pointer;
 }
+*/
 div.solicitar-producto{
     padding: 10px;
     background-color: #dcdcdc;
@@ -98,3 +95,19 @@ div.solicitar-producto>button{
 td.atributo{
     background-color: #f7f7f7;
 }
+
+h4.titulo-seccion{
+    color: #6e748f;
+    font-size: 18px;
+    padding-left: 1px;
+}
+.eliminar-producto{
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    color: #969696;
+}
+p{
+    color: #9fa4b8;
+}
+

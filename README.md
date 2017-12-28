@@ -191,7 +191,13 @@ ng serve
 <app-colores> </app-colores>
 <app-colores> </app-colores>
 
-
+#-
 
 #Crear un nuevo servicio 
 ng generate service categoria
+
+
+# ACTUALIZAR DEPENDENCIAS DE PACKAGE.json 
+sudo npm i -g npm-check-updates
+sudo npm-check-updates -u
+sudo npm install
