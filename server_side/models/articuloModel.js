@@ -6,7 +6,6 @@ var articuloModel = new Schema({
     nombre: {type: String},
     token: {type: String},
     categoria: {type: String},
-    subcategoria: {type: String},
     cantidad: {type: Number},
     propiedades: {type: Array}
 });

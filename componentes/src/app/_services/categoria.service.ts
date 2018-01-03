@@ -1,49 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Categoria } from '../_models/index';
+import { HttpClient } from '@angular/common/http';
+import { Categoria, Modelo } from '../_models/index';
 
 @Injectable()
 export class CategoriaService {
 
-  resultado:Array<Categoria>;
-  URL:string;
-  
+  API_URL: string;
+
   constructor(private http: HttpClient) {
-    this.resultado = [];
-    this.URL = 'http://localhost:4200/assets/json/categorias.json';
+    this.API_URL = 'http://localhost:8000/';
   }
-  
-  agregarArticulo(_nuevoArticulo){
-    this.resultado.push(_nuevoArticulo);
-  }
-  
-  mostrarArticulos(){
-    /*
-    if(this.resultado.length > 0){
-      return this.resultado;
-    } else {
-      return false;
+  /*
+    agregarArticulo(_nuevoArticulo) {
+      this.resultado.push(_nuevoArticulo);
     }
-    */
-  }
+    mostrarArticulos() {
+      if(this.resultado.length > 0){
+        return this.resultado;
+      } else {
+        return false;
+      }
+    }
+    public crear(categoria: Categoria) {
+      // return this.http.post<Categoria>(this.URL, categoria);
+    }
 
-  public crear(categoria:Categoria){
-    // return this.http.post<Categoria>(this.URL, categoria);
-  }
+    public borrar(categoria: Categoria) {
+      // return this.http.delete<Categoria>(`${this.URL}/${categoria._id}`);
+    }
 
-  public borrar(categoria: Categoria){
-    // return this.http.delete<Categoria>(`${this.URL}/${categoria._id}`);
-  }
-
-  public obtener(id: string){
-    // return this.http.get<Categoria>(`${this.URL}/${id}`);
-  }
-
+    public obtener(id: string) {
+      // return this.http.get<Categoria>(`${this.URL}/${id}`);
+    }
+    public actualizar(categoria: Categoria) {
+      // return this.http.put<Categoria>(`${this.URL}/${categoria._id}`, categoria);
+    }
+  */
   public listar() {
-    return this.http.get(this.URL);
+    return this.http.get<Categoria[]>(this.API_URL + 'api/modelos/nombres');
   }
 
-  public actualizar(categoria: Categoria){
-    // return this.http.put<Categoria>(`${this.URL}/${categoria._id}`, categoria);
+  public obtenerCaracteristicas(categoria_id: string) {
+    return this.http.get<Modelo>(this.API_URL + 'api/modelos/' + categoria_id);
   }
 }

@@ -17,10 +17,12 @@ var articuloController = function(Articulo){
 
         var query = {};
 
-        // Si esta 
-        if(req.query.genre)
-        {
-            query.genre = req.query.genre;
+        // Si el usuario busca por genero 
+        console.log(req.query.token);
+
+        if (req.query.token) {
+            // console.log("BUSCANDO");
+            query = { token: new RegExp('^'+req.query.token, "i") };
         }
         Articulo.find(query, function(err,articulos){
 

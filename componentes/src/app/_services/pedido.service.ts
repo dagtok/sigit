@@ -1,37 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Articulo, ArticuloCarrito, Categoria } from '../_models/index';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Articulo, ArticuloCarrito, Categoria, Pedido } from '../_models/index';
 
 @Injectable()
-export class SolicitudService {
+export class PedidoService {
 
   API_URL: string;
   articulosCarrito:Array<ArticuloCarrito>;
   constructor(private http: HttpClient) {
+    this.inicializarCarrito();
+    this.API_URL = 'http://localhost:8000/api/';
+  }
+
+  inicializarCarrito(){
     this.articulosCarrito = [];
-    this.API_URL = 'http://localhost:4200/assets/json/';
   }
 
   obtenerCatalogoProductos(){
-    return this.http.get<Articulo[]>(this.API_URL + 'articulos.json');
+    return this.http.get<Articulo[]>(this.API_URL + 'articulos');
   }
 
   //Buscar producto
-  buscarProductoEnCatalogo(_parametroBusqueda: string){
-    //this.obtenerCategorias(_parametroBusqueda);
-    //this.obtenerSubCategorias(_parametroBusqueda);
-    //this.obtenerProductos(_parametroBusqueda);
-    return this.http.get<Articulo[]>(this.API_URL + 'articulos-2.json');
+  buscarProductoEnCatalogo(_parametro_de_busqueda: string){
+    //this.obtenerCategorias(_parametro_de_busqueda);
+    //this.obtenerProductos(_parametro_de_busqueda);
+    let parametros = new HttpParams().set('token', _parametro_de_busqueda);
+    return this.http.get<Articulo[]>(this.API_URL + 'articulos', { params: parametros });
   }
-  // obtenerCategorias(_parametroBusqueda: string){
-    // return this.http.get(this.API_URL);
-  // }
-
-  // obtenerSubCategorias(_parametroBusqueda: string){
-    // return this.http.get(this.API_URL);
-  // }
-
-  // obtenerProductos(_parametroBusqueda: string){
+  // obtenerCategorias(_parametro_de_busqueda: string){
     // return this.http.get(this.API_URL);
   // }
   // Funcionalidades basicas de Carrito
@@ -42,7 +38,6 @@ export class SolicitudService {
                         0,
                         _nuevoArticulo.token,
                         _nuevoArticulo.categoria,
-                        _nuevoArticulo.subcategoria,
                         _nuevoArticulo.propiedades
                       );
 
@@ -80,19 +75,7 @@ export class SolicitudService {
   borrarArticuloDeCarrito(_posicion:number):void{
     this.articulosCarrito.splice(_posicion, 1);
   }
-  // borrar esto
-  ejemploArray(){
-    /*
-    this.http.get(this.apiAllUrl)
-    .map((res: Response) => res.json())
-    .subscribe(
-        data => {
-            this.nrs = data.map(nrObj => nrObj.number)
-        },
-    );
-    */
-    this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
-      console.log(data);
-    });
+  registrarPedido(_pedido: Pedido){
+    return this.http.post<Pedido>(this.API_URL + 'pedidos', _pedido);
   }
 }

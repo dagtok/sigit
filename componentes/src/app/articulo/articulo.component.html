@@ -4,51 +4,53 @@
       <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
         <div class="form-group">
           <label for="categoria">Categoria</label>
-              <select class="form-control"  id="categoria"
-                      required
-                      [(ngModel)]="articulo.categoria" name="categoria">
-                  <option *ngFor="let categoria of categorias" [value]="categoria.nombre">{{categoria.nombre}}</option>
-              </select>
+          <select class="form-control" 
+                  id="categoria" 
+                  required 
+                  (change)="obtenerCaracteristicas($event)" 
+                  [(ngModel)]="articulo.categoria"
+                  name="categoria">
+            <option *ngFor="let categoria of categorias" [value]="categoria.categoria">{{categoria.categoria}}</option>
+          </select>
         </div>
         <div class="form-group">
-                <label for="subcategoria">Subcategoria</label>
-                <select class="form-control"  id="subcategoria"
-                        required
-                        [(ngModel)]="articulo.subcategoria" name="subcategoria">
-                    <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.nombre">
-                        {{subcategoria.nombre}}
-                    </option>
-                </select>
-        </div>
-        <div class="form-group">
-            <label for="nombre">Nombre del Modelo</label>
-            <input type="text" class="form-control" id="nombre"
-                         required
-                         [(ngModel)]="articulo.nombre" name="nombre"
-                         (ngModelChange)="asignarTokenAlNombre($event)"
-                         #nombre="ngModel" #spy>
-            <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
-              Nombre del articulo es requerido
-            </div>
-            <!-- <br>TODO: remove this: {{spy.className}} -->
-        </div>
-      </form>
-    
-      <span>
-        Caracteristicas ({{ articulo.propiedades.length }})
-      </span>
-      <div class="form-group row">
-          <div class="col-11" *ngFor="let propiedad of articulo.propiedades; let i = index;">
-            <label for="{{ propiedad.nombre }}">{{ propiedad.texto }}</label>
-              <input type="text" 
-              class="form-control"
-              required
-              name="{{ propiedad.nombre }}"
-              id="{{ propiedad.nombre }}"
-              (ngModelChange)="asignarValorDeAtributo($event, i)"
-              [(ngModel)]="propiedad.valor">
+          <label for="nombre">Nombre del Modelo</label>
+          <input type="text" 
+                class="form-control" 
+                id="nombre" 
+                required 
+                placeholder="EJ: TIPO 1" 
+                [(ngModel)]="articulo.nombre" 
+                name="nombre"
+                (ngModelChange)="asignarTokenAlNombre($event)" 
+                #nombre="ngModel" 
+                #spy>
+          <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+            Nombre del articulo es requerido
           </div>
-      </div>
+          <!-- <br>TODO: remove this: {{spy.className}} -->
+        </div>
+        <span>
+          Caracteristicas ({{ articulo.propiedades.length }})
+        </span>
+        <div class="form-group row">
+          <div class="col-11" *ngFor="let propiedad of articulo.propiedades; let i = index;">
+            <label for="{{ propiedad.nombre }}">{{ propiedad.nombre }}</label>
+            <input type="text" 
+                    class="form-control" 
+                    required 
+                    name="{{ propiedad.nombre }}" 
+                    id="{{ propiedad.nombre }}" 
+                    (ngModelChange)="asignarValorDeAtributo($event, i)"
+                    [(ngModel)]="propiedad.valor">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-default" 
+                (click)="crearArticulo();heroForm.reset();"
+                [disabled]="!heroForm.form.valid">
+          Registrar Nuevo Articulo
+        </button>
+      </form>
     </div>
     <div class="col-6">
       <pre>

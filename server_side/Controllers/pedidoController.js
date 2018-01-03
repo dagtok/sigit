@@ -3,9 +3,9 @@ var pedidoController = function(Pedido){
     var post = function(req, res){
         var pedido = new Pedido(req.body);
 
-        if( !req.body.title ){
+        if( !req.body.elaboro ){
             res.status(400);
-            res.send('Title is required');
+            res.send('Estado del pedido es requerido');
         } else {
             pedido.save();
             res.status(201);
@@ -18,9 +18,9 @@ var pedidoController = function(Pedido){
         var query = {};
 
         // Si el usuario busca por genero 
-        if(req.query.genre)
+        if(req.query.estado)
         {
-            query.genre = req.query.genre;
+            query.estado = req.query.genre;
         }
         Pedido.find(query, function(err,pedidos){
 

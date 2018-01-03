@@ -4,7 +4,6 @@
         "nombre": "Este es un nombre",
         "token": "este-es-un-nombre",
         "categoria": "CINTA DE DATOS",
-        "subcategoria": "KIT DE ACTUALIZACIÓN PARA PC",
         "propiedades": [{
                 "texto": "Capacidad",
                 "nombre": "capacidad",
@@ -54,7 +53,6 @@
         "nombre": "Disco Duro de estado solido",
         "token": "disco-duro",
         "categoria": "DISCO DURO",
-        "subcategoria": "ESTADO SOLIDO",
         "propiedades": [{
                 "texto": "Capacidad",
                 "nombre": "capacidad",

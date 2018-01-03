@@ -2,12 +2,12 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var pedidoModel = new Schema({
-    title: {
-        type: String
-    },
-    author: {type: String},
-    genre: {type: String},
-    read: {type: Boolean, default:false}
+    _id: {type: String},
+	estado: {type: String},
+	unidad: {type: Object},
+	elaboro: {type: Object},
+	autorizo: {type: Object},
+	articulos: {type: Object},
 });
 
 module.exports= mongoose.model('Pedido', pedidoModel);

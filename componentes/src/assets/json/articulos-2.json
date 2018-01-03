@@ -4,7 +4,6 @@
         "nombre": "Disco Duro de estado solido",
         "token": "disco-duro",
         "categoria": "CINTA DE DATOS",
-        "subcategoria": "KIT DE ACTUALIZACIÓN PARA PC",
         "propiedades": [{
                 "texto": "Capacidad",
                 "nombre": "capacidad",

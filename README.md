@@ -195,6 +195,7 @@ ng serve
 
 #Crear un nuevo servicio 
 ng generate service categoria
+ng generate service _services/modelo
 
 
 # ACTUALIZAR DEPENDENCIAS DE PACKAGE.json 

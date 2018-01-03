@@ -8,10 +8,11 @@ import { JwtInterceptor } from './_helpers/index';
 import {
     AlertService,
     AuthenticationService,
-    UserService,
-    SolicitudService,
     CategoriaService,
-    SubcategoriaService
+    ModeloService,
+    PedidoService,
+    UserService,
+    ArticuloService
 } from './_services/index';
 import { AlertComponent } from './_directives/index';
 
@@ -23,7 +24,6 @@ import { RegisterComponent } from './register/index';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 
 // Faltan de revisar
-import { DetallesComponent } from './detalles/detalles.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { DireccionComponent } from './direccion/direccion.component';
@@ -50,7 +50,6 @@ import { routing } from './app.routing';
         LoginComponent,
         RegisterComponent,
         EncabezadoComponent,
-        DetallesComponent,
         SolicitudComponent,
         ArticuloComponent,
         DireccionComponent,
@@ -60,9 +59,10 @@ import { routing } from './app.routing';
         ModeloFormularioComponent
     ],
     providers: [
-        SolicitudService,
+        ArticuloService,
+        PedidoService,
+        ModeloService,
         CategoriaService,
-        SubcategoriaService,
         AuthGuard,
         AlertService,
         AuthenticationService,

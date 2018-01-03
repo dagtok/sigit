@@ -92,7 +92,9 @@
                 <div class="row">
                     <div class="col-6 text-center" *ngFor="let producto of catalogoProductos; let i = index;">
                         <div class="articulo">
-                            <a [routerLink]="['producto/detalles' , producto.id ]"> {{producto.nombre}} </a>
+                            <a [routerLink]="['producto/detalles' , producto.id ]">
+                                {{producto.categoria}} {{producto.nombre}}
+                            </a>
                             <br>
                             <button (click)="mostrarDetalleArticulo(producto, i)" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fa fa-address-card-o" aria-hidden="true"></i>
@@ -107,24 +109,24 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-3">
         <div class="resumen-pedido">
             <h4 class="text-center">
                 Tu solicitud
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                ({{ solicitudServicio.articulosCarrito.length }})
+                ({{ pedidoServicio.articulosCarrito.length }})
             </h4>
             <hr>
-            <div *ngIf="solicitudServicio.articulosCarrito.length > 0">
+            <div *ngIf="pedidoServicio.articulosCarrito.length > 0">
                 <table class="table">
-                    <tr *ngFor="let articulo of solicitudServicio.articulosCarrito; let i = index;">
+                    <tr *ngFor="let articulo of pedidoServicio.articulosCarrito; let i = index;">
                         <td width="5%">
                             <button class="btn eliminar-producto" (click)="eliminarProductoCarrito(i)">
                                 <i class="fa fa-times-circle-o" aria-hidden="true"></i>
                             </button>
                         </td>
                         <td width="70%">
-                            {{ articulo.nombre }}
+                            {{ articulo.categoria }} {{ articulo.nombre }}
                         </td>
                         <td width="25%">
                             <button class="btn" (click)="sumarArticuloACarrito(i)">
@@ -137,17 +139,22 @@
                         </td>
                     </tr>
                 </table>
-                <button class="btn terminar-solicitud">
+                <button class="btn terminar-solicitud" (click)="finalizarSolicitud()">
                     <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                    Completar Solicitud
+                    Finalizar Solicitud
                 </button>
             </div>
-            <div class="text-center" *ngIf="solicitudServicio.articulosCarrito.length == 0">
+            <div class="text-center" *ngIf="pedidoServicio.articulosCarrito.length == 0">
                 Sin articulos en tu pedido
                 <br>
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </div>
         </div>
+    </div>
+    <div class="col-3">
+        <pre>
+            {{ pedido | json }}
+        </pre>
     </div>
 </div>
 
@@ -158,7 +165,7 @@
         <div class="modal-content" *ngIf="detalleArticulo">
             <div class="modal-header">
                 <h3 class="modal-title" id="exampleModalLabel">
-                    {{ detalleArticulo.nombre }} - {{ detalleArticulo.categoria }} - {{ detalleArticulo.subcategoria }}
+                    {{ detalleArticulo.nombre }} - {{ detalleArticulo.categoria }}
                 </h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -170,7 +177,7 @@
                         <div class="col-12">
                             <table class="table">
                                 <tr *ngFor="let propiedad of detalleArticulo.propiedades; let i = index;">
-                                    <td class="atributo" align="right">{{ propiedad.texto }}</td>
+                                    <td class="atributo" align="right">{{ propiedad.nombre }}</td>
                                     <td>
                                         {{ propiedad.valor }}
                                     </td>
