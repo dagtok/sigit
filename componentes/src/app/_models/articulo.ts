@@ -4,6 +4,7 @@ export class Articulo {
         public nombre: string,
         public token: string,
         public categoria: string,
-        public propiedades:Array<object>
-    ){ }
+        // public validacion:object,
+        public propiedades: Array<object>,
+    ) { }
 }

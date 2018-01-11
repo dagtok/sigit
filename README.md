@@ -202,3 +202,8 @@ ng generate service _services/modelo
 sudo npm i -g npm-check-updates
 sudo npm-check-updates -u
 sudo npm install
+
+# Copiar una coleccion de una base a otra 
+db.clasificaciones.find().forEach(function(d){ db.getSiblingDB('sigit')['unidad_clasificaciones'].insert(d); });
+
+db.usuarios.find().forEach(function(d){ db.getSiblingDB('sigit')['usuarios'].insert(d); });

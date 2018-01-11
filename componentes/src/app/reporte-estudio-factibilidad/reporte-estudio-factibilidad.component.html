@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-12">
+    <ol>
+      <li *ngFor="let articulo of articulos; let i = index">
+        {{ articulo.total }}
+        {{ articulo._id.categoria }}
+        {{ articulo._id.nombre }}
+        <ul>
+          <li *ngFor="let unidad of articulo.unidades; let i = index">
+            {{ unidad.cantidad }} para
+            {{ unidad.unidad }}
+          </li>
+        </ul>
+      </li>
+    </ol> 
+  </div>
+</div>

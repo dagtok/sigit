@@ -86,7 +86,7 @@
                 <!--
                     *ngIf="(productos.length > 0 && terminoDeBusqueda.length > 0)" 
                 -->
-                <p>
+                <p *ngIf="catalogoProductos">
                     {{ catalogoProductos.length }} articulos del catalogo que contienen la palabra "{{ terminoDeBusqueda }}" en el nombre
                 </p>
                 <div class="row">

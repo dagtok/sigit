@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../_services/index';
 
 @Component({
   selector: 'app-encabezado',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encabezado.component.css']
 })
 export class EncabezadoComponent implements OnInit {
-
-  constructor() {}
+  informacion_usuario: Object;
+  constructor(public autentificacionService: AuthenticationService) {
+    this.informacion_usuario = this.autentificacionService.getUserInfo(); // Obtiene informacion del local storage
+    // console.log(informacion_usuario);
+  }
 
   ngOnInit() {
   }

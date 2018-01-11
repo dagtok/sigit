@@ -25,9 +25,8 @@ export class ModeloService {
     public actualizar(Modelo: Modelo) {
       // return this.http.put<Modelo>(`${this.URL}/${Modelo._id}`, Modelo);
     }
-    public listar() {
-      console.log("listando");
-      return this.http.get<Modelo[]>(this.API_URL + 'api/Modelos');
-    }
-  */
+    */
+  public obtenerCatalogoCategorias() {
+    return this.http.get<Modelo[]>(this.API_URL + 'api/Modelos');
+  }
 }

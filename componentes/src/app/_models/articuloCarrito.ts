@@ -5,6 +5,14 @@ export class ArticuloCarrito {
         public cantidad: number,
         public token: string,
         public categoria: string,
-        public propiedades:Array<object>
-    ){ }
+        public validacion: {
+            responsable: {
+                fecha: string,
+                nombre: string,
+                _id: string
+            },
+            valor: boolean
+        },
+        public propiedades: Array<object>
+    ) { }
 }

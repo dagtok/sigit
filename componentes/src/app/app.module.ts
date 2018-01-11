@@ -12,7 +12,11 @@ import {
     ModeloService,
     PedidoService,
     UserService,
-    ArticuloService
+    ArticuloService,
+    SolicitudValidarService,
+    ReportesService,
+    UnidadService,
+    UsuarioService
 } from './_services/index';
 import { AlertComponent } from './_directives/index';
 
@@ -25,16 +29,25 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 
 // Faltan de revisar
 import { SolicitudComponent } from './solicitud/solicitud.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { DireccionComponent } from './direccion/direccion.component';
 import { FormatosComponent } from './formatos/formatos.component';
 import { FormatoEditarComponent } from './formato-editar/formato-editar.component';
 import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
 import { ModeloFormularioComponent } from './modelo-formulario/modelo-formulario.component';
+import { ReporteAnexoTecnicoComponent } from './reporte-anexo-tecnico/reporte-anexo-tecnico.component';
 
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers/index';
+// import { fakeBackendProvider } from './_helpers/index';
 import { routing } from './app.routing';
+import { ReporteEstudioFactibilidadComponent } from './reporte-estudio-factibilidad/reporte-estudio-factibilidad.component';
+import { ArticuloListarTodosComponent } from './articulo-listar-todos/articulo-listar-todos.component';
+import { PedidoListarTodosComponent } from './pedido-listar-todos/pedido-listar-todos.component';
+import { CategoriaListarTodosComponent } from './categoria-listar-todos/categoria-listar-todos.component';
+import { ReporteComponent } from './reporte/reporte.component';
+
+
 
 @NgModule({
     imports: [
@@ -56,7 +69,14 @@ import { routing } from './app.routing';
         FormatosComponent,
         FormatoEditarComponent,
         SolicitudValidarComponent,
-        ModeloFormularioComponent
+        ModeloFormularioComponent,
+        ReporteAnexoTecnicoComponent,
+        UsuarioComponent,
+        ReporteEstudioFactibilidadComponent,
+        ArticuloListarTodosComponent,
+        PedidoListarTodosComponent,
+        CategoriaListarTodosComponent,
+        ReporteComponent
     ],
     providers: [
         ArticuloService,
@@ -66,15 +86,18 @@ import { routing } from './app.routing';
         AuthGuard,
         AlertService,
         AuthenticationService,
+        SolicitudValidarService,
+        ReportesService,
         UserService,
+        UnidadService,
+        UsuarioService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
             multi: true
         },
-
         // provider used to create fake backend
-        fakeBackendProvider
+        // fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

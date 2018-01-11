@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4" *ngFor="let articulo of articulos">
+      <div class="articulo text-center">
+          {{ articulo.categoria }}<br>
+          {{ articulo.nombre }}<br>
+          <a [routerLink]="[ '/admin/articulo/editar', articulo._id ]">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>

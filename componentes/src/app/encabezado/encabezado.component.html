@@ -1,23 +1,18 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <div class="d-flex justify-content-between bd-highlight mb-3" style="background-color:white; border-top:2px solid #28292A; border-bottom:25px solid #ededed;">
-        <div class="p-2 bd-highlight">
-          <div class="d-flex">
-            <div>
-              <img src="assets/images/logo-sep-ipn.png" height="87">
-            </div>
-            <div>
-              <span>
-                Instituto Politécnico Nacional
-                <br> "La Técnica al Servicio de la Patria"
-              </span>
-            </div>
-          </div>
+      <div class="d-flex justify-content-between mb-3" style="background-color:white; border-top:2px solid #28292A; border-bottom:25px solid #ededed;">
+        <div class="p-2 d-flex">
+          <img src="assets/images/logo-sep-ipn.png" height="87">
+          <span>
+            Instituto Politécnico Nacional
+            <br> "La Técnica al Servicio de la Patria"
+          </span>
         </div>
-        <div class="p-2 bd-highlight">
+        <div class="p-2" *ngIf="informacion_usuario">
           <p>
-            ESCUELA SUPERIOR DE COMPUTO
+            {{ informacion_usuario.unidad.nombre }}
+            <!-- <br> {{ informacion_usuario.nombre }} -->
             <br> RESPONSABLE DE LA UDI
           </p>
           <p>
@@ -29,67 +24,23 @@
         </div>
       </div>
     </div>
+    <div class="col-12">
+      <table class="table">
+        <tr>
+          <td>
+            <a [routerLink]="['/admin/reportes']">REPORTES</a>
+          </td>
+          <td>
+            <a [routerLink]="['admin/categoria/listar-todos']">CATEGORIAS</a>
+          </td>
+          <td>
+            <a [routerLink]="['admin/articulo/listar-todos']">ARTICULOS</a>
+          </td>
+          <td>
+            <a [routerLink]="['admin/pedido/listar-todos']">PEDIDOS</a>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
-
-<!--
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">SIGIT</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
-<ul>
-  <li>
-    <a [routerLink]="['lista-libros']">
-      Lista de libros
-    </a>
-  </li>
-  <li>
-      <a [routerLink]="['acerca-de']" routerLinkActive="activo">
-        Acerca de 
-      </a>
-  </li>
-</ul>
-
-<button (click)="mostrarLista = !mostrarLista">Libros</button>
-
-<div class="misLibros" *ngIf="mostrarLista">
-  <h2>Mis libros</h2>
-  <ul *ngIf="librosSeleccionados.mostrarLibros()">
-    <li *ngFor="let libro of librosSeleccionados.mostrarLibros()">{{ libro.titulo }}</li>
-  </ul>
-</div>
-
-
--->

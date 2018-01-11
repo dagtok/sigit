@@ -12,8 +12,10 @@ export class ArticuloService {
   }
 
   public crearArticulo(_nuevoArticulo: Articulo) {
-    console.log(_nuevoArticulo);
     return this.http.post<Articulo>(this.API_URL + 'api/articulos', _nuevoArticulo);
   }
 
+  public obtenerCatalogoArticulos() {
+    return this.http.get<Articulo[]>(this.API_URL + 'api/articulos');
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PedidoService, ArticuloService } from '../_services/index';
 import { Observable } from 'rxjs/Rx';
+import { ArticuloService, AuthenticationService, PedidoService } from '../_services/index';
 import { Articulo, ArticuloCarrito, Pedido } from 'app/_models';
 import { audit } from 'rxjs/operator/audit';
 
@@ -13,21 +13,22 @@ import { audit } from 'rxjs/operator/audit';
 })
 
 export class SolicitudComponent implements OnInit {
-  catalogoProductos: Array<Articulo>
+  catalogoProductos: Array<Articulo>;
   errorHttp: Boolean;
   cargando: Boolean;
   terminoDeBusqueda: string;
   detalleArticulo: ArticuloCarrito;
   pedido: Pedido;
 
-  constructor(public articuloService: ArticuloService, public pedidoServicio: PedidoService) {
+  constructor(public articuloService: ArticuloService,
+    public pedidoServicio: PedidoService,
+    public autentificacionService: AuthenticationService) {
     this.cargando = true;
     this.obtenerCatalogoDeProductos();
-    this.construirPedido();
+    this.inicializarPedido();
   }
 
   ngOnInit(): void {
-
     // Dynamic typing from search box to filter on client logos
     const enCadaPalabraEscrita = Observable.fromEvent(document.getElementById('client-search'), 'keyup')
       .map((e: KeyboardEvent) => e.target['value'])
@@ -76,56 +77,61 @@ export class SolicitudComponent implements OnInit {
     this.pedidoServicio.agregarArticuloAlCarrito(_articulo);
   }
 
-  mostrarDetalleArticulo(_articulo: Articulo, _posicion: number): void{
+  mostrarDetalleArticulo(_articulo: Articulo, _posicion: number): void {
     this.detalleArticulo = new ArticuloCarrito(
       _articulo._id,
       _articulo.nombre,
       1,
       _articulo.token,
       _articulo.categoria,
+      null,
       _articulo.propiedades
     );
   }
 
-  construirPedido() {
+  inicializarPedido() {
 
-    let unidad = {
-      '_id': '587c0c2e08b45ebe600041aa',
-      'clave_ur': 'O2K000',
-      'nombre' : 'Escuela Superior de Computo',
-      'sigla': 'ESCOM',
-      'direccion': 'Juan de Dios Bátiz, Nueva Industrial Vallejo, Ciudad de México, CDMX'
+    const db_usuario = this.autentificacionService.getUserInfo(); // Obtiene informacion del local storage
+    // console.log(db_usuario);
+
+    const unidad = {
+      '_id': db_usuario.unidad._id,
+      'clave_ur': db_usuario.unidad.clave_ur,
+      'nombre': db_usuario.unidad.nombre,
+      'sigla': db_usuario.unidad.sigla,
+      'direccion': db_usuario.unidad.direccion
     };
 
-    let elaboro = {
-      '_id': '587c0c2e08b45ebe600041aa',
-      'nombre': 'Richberg Hype Mendoza',
+    const elaboro = {
+      '_id': db_usuario._id,
+      'nombre': db_usuario.nombre,
       'fecha': null
     };
 
-    let autorizo = {
+    const autorizo = {
       '_id': null,
       'nombre': null,
       'fecha': null
     };
 
     this.pedido = new Pedido(null, null, unidad, elaboro, autorizo, this.pedidoServicio.articulosCarrito);
+
   }
 
-  finalizarSolicitud(){
+  finalizarSolicitud() {
     this.pedidoServicio.registrarPedido(this.pedido).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.pedidoServicio.inicializarCarrito();
-      this.construirPedido();
+      this.inicializarPedido();
     });
   }
 
-  agregaProductoDetalleArticulo(): void{
+  agregaProductoDetalleArticulo(): void {
     this.detalleArticulo.cantidad += 1;
   }
 
   eliminaProductoDetalleArticulo(): void {
-    if ( (this.detalleArticulo.cantidad - 1) > 0) {
+    if ((this.detalleArticulo.cantidad - 1) > 0) {
       this.detalleArticulo.cantidad -= 1;
     } else {
       this.detalleArticulo.cantidad = 1;

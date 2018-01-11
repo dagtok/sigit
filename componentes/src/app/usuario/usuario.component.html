@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Definir características de la categoría.</h1>
+  <div class="row">
+    <div class="col-6">
+      <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <div class="form-group">
+          <label for="clasificacion_unidad">Nivel</label>
+          <select class="form-control" id="clasificacion_unidad" required (change)="obtenerUnidadesPorClasificacion($event)" name="categoria">
+            <option *ngFor="let clasificacion of clasificacion_unidades" [value]="clasificacion.clasificacion">{{clasificacion.descripcion}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="unidad_id">Dependencia</label>
+          <select class="form-control" id="unidad_id" required (change)="asignarUnidadAUsuario($event)" name="categoria">
+            <option *ngFor="let unidad of unidades" [value]="unidad.unidad">{{unidad.unidad}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="text" class="form-control" [(ngModel)]="usuario.email">
+        </div>
+        <div class="form-group">
+          <label for="usuario">Usuario</label>
+          <input id="usuario" name="usuario" type="text" class="form-control" [(ngModel)]="usuario.usuario">
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="text" class="form-control" [(ngModel)]="usuario.password">
+        </div>
+        <button type="submit" class="btn btn-default" (click)="crearUsuario();heroForm.reset();" [disabled]="!heroForm.form.valid">
+          Registrar Usuario
+        </button>
+      </form>
+    </div>
+    <div class="col-6">
+      <pre>{{ usuario | json}}</pre>
+    </div>
+  </div>
+</div>

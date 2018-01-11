@@ -46,9 +46,9 @@ export class ArticuloComponent implements OnInit {
         // this.onSubmit();
       },
       err => {
-        console.log("Error occured");
+        console.log('Error occured');
       }
-    );
+      );
   }
 
   generarToken(_valor_atributo: string) {
@@ -57,15 +57,10 @@ export class ArticuloComponent implements OnInit {
   }
 
   obtenerCaracteristicas(_categoriaElegida) {
-    //console.log(_categoriaElegida.target.selectedIndex);
-    //console.log(_categoriaElegida.target.value);
-    // console.log(this.categorias[index]._id);
-
     const index = _categoriaElegida.target.selectedIndex;
     const categoria_id = this.categorias[index]._id;
 
     this.categoriasServicio.obtenerCaracteristicas(categoria_id).subscribe(modelo => {
-      // this.categorias = data;
       this.articulo = new Articulo(null, null, null, modelo.categoria, modelo.propiedades);
     }).closed;
 
@@ -73,10 +68,10 @@ export class ArticuloComponent implements OnInit {
 
   agregarToken() {
     // buscar si existe token
-    // Si no existe hacer push 
+    // Si no existe hacer push
   }
   agregarAtributo() {
     // buscar si existe token
-    // Si no existe hacer push 
+    // Si no existe hacer push
   }
 }

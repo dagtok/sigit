@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-12">
+    <input type="text" class="form-control">
+  </div>
+  <div class="col-3 text-center" *ngFor="let pedido of pedidos">
+    <div class="pedido">
+      <!--
+        <pre>
+          {{ pedido | json }}
+        </pre>
+      -->
+      {{ pedido.unidad.sigla }}<br>
+      {{ pedido.unidad.nombre }}<br>
+      {{ pedido.creado }}<br>
+      Articulos: {{ pedido.articulos.length }}
+    </div>
+  </div>
+</div>

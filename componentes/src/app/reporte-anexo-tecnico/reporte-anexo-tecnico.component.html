@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="text-center">Reporte Anexo Tecnico</h1>
+    <hr>
+  </div>
+  <div class="col-12" *ngFor="let categoria of categorias">
+    <h3 class="text-center">{{ categoria.nombre }}</h3>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>CANTIDAD</th>
+          <th>TIPO</th>
+          <th>DESCRIPCIÓN TÉCNICA</th>
+          <th>UNIDAD REQUIRENTE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let articulo of categoria.productos; let i = index">
+          <td align="center" class="align-middle">
+            {{ i + 1 }}
+          </td>
+          <td align="center" class="align-middle">
+            {{ articulo.cantidad }}
+          </td>
+          <td align="center" class="align-middle">
+            {{ articulo._id.categoria }}
+            <br> {{ articulo._id.nombre }}
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let caracteristica of articulo._id.propiedades">
+                {{ caracteristica.nombre }} : {{ caracteristica.valor }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <li *ngFor="let escuela of articulo.escuelas">
+              <a [routerLink]="[ '/admin/pedidos/', escuela.pedido_id ]" data-toggle="tooltip" data-placement="top" title="VER SOLICITUD DE {{ escuela.nombre }}">
+                {{ escuela.sigla }} ({{ escuela.cantidad }})
+              </a>
+            </li>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

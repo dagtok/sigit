@@ -10,6 +10,7 @@ var routes = function(Pedido){
         .get(pedidoController.get);
 
     pedidoRouter.use('/:pedidoId', function(req,res,next){
+        console.log(req.params.pedidoId);
         Pedido.findById(req.params.pedidoId, function(err,pedido){
             if(err)
                 res.status(500).send(err);
@@ -20,14 +21,14 @@ var routes = function(Pedido){
             }
             else
             {
-                res.status(404).send('no pedido found');
+                res.status(404).send('El pedido no existe');
             }
         });
     });
     
     pedidoRouter.route('/:pedidoId')
         .get(function(req,res){
-
+            // console.log("Buscando Pedido");
             var returnPedido = req.pedido.toJSON();
 
             returnPedido.links = {};
@@ -50,14 +51,18 @@ var routes = function(Pedido){
             });
         })
         .patch(function(req,res){
+            // console.log(req.headers);
+            // Date.now
             if(req.body._id)
                 delete req.body._id;
-
+            
+            // req.pedido.autorizo.fecha = Date.now;
             for(var p in req.body)
             {
                 req.pedido[p] = req.body[p];
             }
-
+            
+            //console.log(req.pedido.autorizo.fecha);
             req.pedido.save(function(err){
                 if(err)
                     res.status(500).send(err);
