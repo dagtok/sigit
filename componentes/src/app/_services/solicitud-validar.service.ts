@@ -21,7 +21,6 @@ export class SolicitudValidarService {
   validarPedido(_pedido: Pedido) {
     return this.http
       .patch(this.API_URL + 'pedidos/' + _pedido._id, _pedido, {
-        // params: new HttpParams().set('id', '56784'),
         headers: new HttpHeaders().set('Authorization_dagtok', 'some-token')
       })
       .subscribe(response => {

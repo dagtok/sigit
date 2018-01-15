@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
@@ -9,7 +14,6 @@ import {
     AlertService,
     AuthenticationService,
     CategoriaService,
-    ModeloService,
     PedidoService,
     UserService,
     ArticuloService,
@@ -20,12 +24,13 @@ import {
 } from './_services/index';
 import { AlertComponent } from './_directives/index';
 
-import { AppComponent } from './app.component';
+
 
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
+import { EncabezadoUsuarioComponent } from './encabezado-usuario/encabezado-usuario.component';
 
 // Faltan de revisar
 import { SolicitudComponent } from './solicitud/solicitud.component';
@@ -35,7 +40,7 @@ import { DireccionComponent } from './direccion/direccion.component';
 import { FormatosComponent } from './formatos/formatos.component';
 import { FormatoEditarComponent } from './formato-editar/formato-editar.component';
 import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
-import { ModeloFormularioComponent } from './modelo-formulario/modelo-formulario.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 import { ReporteAnexoTecnicoComponent } from './reporte-anexo-tecnico/reporte-anexo-tecnico.component';
 
 // used to create fake backend
@@ -46,14 +51,21 @@ import { ArticuloListarTodosComponent } from './articulo-listar-todos/articulo-l
 import { PedidoListarTodosComponent } from './pedido-listar-todos/pedido-listar-todos.component';
 import { CategoriaListarTodosComponent } from './categoria-listar-todos/categoria-listar-todos.component';
 import { ReporteComponent } from './reporte/reporte.component';
+import { UsuarioListarTodosComponent } from './usuario-listar-todos/usuario-listar-todos.component';
+import { UnidadComponent } from './unidad/unidad.component';
+import { UnidadListarTodosComponent } from './unidad-listar-todos/unidad-listar-todos.component';
+import { SolicitudSeguimientoComponent } from './solicitud-seguimiento/solicitud-seguimiento.component';
+import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 
 
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
+        ToastModule.forRoot(),
         routing
     ],
     declarations: [
@@ -63,25 +75,30 @@ import { ReporteComponent } from './reporte/reporte.component';
         LoginComponent,
         RegisterComponent,
         EncabezadoComponent,
+        EncabezadoUsuarioComponent,
         SolicitudComponent,
         ArticuloComponent,
         DireccionComponent,
         FormatosComponent,
         FormatoEditarComponent,
         SolicitudValidarComponent,
-        ModeloFormularioComponent,
+        CategoriaComponent,
         ReporteAnexoTecnicoComponent,
         UsuarioComponent,
         ReporteEstudioFactibilidadComponent,
         ArticuloListarTodosComponent,
         PedidoListarTodosComponent,
         CategoriaListarTodosComponent,
-        ReporteComponent
+        ReporteComponent,
+        UsuarioListarTodosComponent,
+        UnidadComponent,
+        UnidadListarTodosComponent,
+        SolicitudSeguimientoComponent,
+        SolicitudesComponent
     ],
     providers: [
         ArticuloService,
         PedidoService,
-        ModeloService,
         CategoriaService,
         AuthGuard,
         AlertService,

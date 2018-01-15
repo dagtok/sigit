@@ -10,7 +10,8 @@
             clave_ur: string,
             nombre: string,
             sigla: string,
-            direccion: string
+            clasificacion: string,
+            direccion: string,
         },
         public tipo: string,
         public status: string

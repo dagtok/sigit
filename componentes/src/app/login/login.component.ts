@@ -33,7 +33,13 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    console.log('data');
+                    console.log(data.tipo);
+                    if(data.tipo == 'Administrador'){
+                        this.router.navigate(['/admin/usuario/listar-todos']);
+                    } else {
+                        this.router.navigate([this.returnUrl]);
+                    }
                 },
                 error => {
                     this.alertService.error(error);

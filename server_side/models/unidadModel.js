@@ -7,7 +7,8 @@ var unidadModel = new Schema({
     sigla: {type: String},
     clase_global: {type: String},
     clase: {type: String},
-    clasificacion: {type: String}
+    clasificacion: {type: String},
+    direccion: {type: String}
 });
 
 module.exports= mongoose.model('Unidades', unidadModel);

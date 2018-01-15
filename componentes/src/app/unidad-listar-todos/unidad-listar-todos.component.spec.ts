@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PedidoListarTodosComponent } from './pedido-listar-todos.component';
+import { UnidadListarTodosComponent } from './unidad-listar-todos.component';
 
-describe('PedidoListarTodosComponent', () => {
-  let component: PedidoListarTodosComponent;
-  let fixture: ComponentFixture<PedidoListarTodosComponent>;
+describe('UnidadListarTodosComponent', () => {
+  let component: UnidadListarTodosComponent;
+  let fixture: ComponentFixture<UnidadListarTodosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PedidoListarTodosComponent ]
+      declarations: [ UnidadListarTodosComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PedidoListarTodosComponent);
+    fixture = TestBed.createComponent(UnidadListarTodosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

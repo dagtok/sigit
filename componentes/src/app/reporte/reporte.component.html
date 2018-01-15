@@ -1,18 +1,27 @@
+<app-encabezado></app-encabezado>
 <div class="row">
-  <div class="col-12 text-center">
-    <h1>Reportes Disponibles</h1>
-    <hr>
+  <div class="col-12 text-center mb-5 mt-4">
+    <div class="d-flex justify-content-center">
+      <div>
+          <h1>Reportes Disponibles</h1>
+      </div>
+    </div>
+    <input type="text" name="search" placeholder="Buscar por nombre del usuario o unidad de adscripción">
   </div>
-  <div class="col-4 text-center">
-    <div class="reporte">
-      ANEXO TECNICO<br>
-      <a [routerLink]="['/admin/reporte/anexo-tecnico']">GENERAR</a>
+  <div class="col-sm-4 mb-3">
+    <div class="card text-center">
+      <div class="card-block p-2">
+        <h3 class="card-title">ANEXO TECNICO</h3>
+        <a class="btn btn-primary" [routerLink]="['/admin/reporte/anexo-tecnico']">GENERAR</a>
+      </div>
     </div>
   </div>
-  <div class="col-4 text-center">
-    <div class="reporte">
-      ESTUDIO DE FACTIBILIDAD<br>
-      <a [routerLink]="['/admin/reporte/estudio-factibilidad']">GENERAR</a>
+  <div class="col-sm-4 mb-3">
+    <div class="card text-center">
+      <div class="card-block p-2">
+        <h3 class="card-title">ESTUDIO DE FACTIBILIDAD</h3>
+        <a class="btn btn-primary" [routerLink]="['/admin/reporte/estudio-factibilidad']">GENERAR</a>
+      </div>
     </div>
   </div>
 </div>

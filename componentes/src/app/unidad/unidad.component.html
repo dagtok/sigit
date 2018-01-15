@@ -1,0 +1,63 @@
+<app-encabezado></app-encabezado>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="mb-4 mt-4" *ngIf="accion === 'crear'">Crear Unidad.</h1>
+      <h1 class="mb-4 mt-4" *ngIf="accion === 'editar'">Editar Unidad.</h1>
+    </div>
+    <div class="offset-2 col-8" *ngIf="unidad">
+      <form #heroForm="ngForm">
+        <div class="form-group">
+          <label for="clasificacion_unidad">Nivel</label>
+          <select class="form-control" id="clasificacion_unidad" required (change)="obtenerUnidadesPorClasificacion($event)" name="clasificacion">
+            <option *ngFor="let clasificacion of clasificacion_unidades" [selected]="unidad.clasificacion == clasificacion.clasificacion"
+              [value]="unidad.clasificacion">{{clasificacion.descripcion}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="unidad_id">Dependencia</label>
+          <select class="form-control" id="unidad_id" required (change)="asignarUnidadAUsuario($event)" name="categoria">
+            <option *ngFor="let unidad of unidades" [selected]="unidad.unidad.clave_ur == unidad.clave_ur" [value]="unidad.unidad.nombre">{{unidad.unidad}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Clave UR</label>
+          <input type="text" class="form-control" id="clave_ur" name="clave_ur" [(ngModel)]="unidad.clave_ur">
+        </div>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" class="form-control" [(ngModel)]="unidad.unidad">
+        </div>
+        <div class="form-group">
+          <label for="unidad">Sigla</label>
+          <input id="sigla" name="sigla" type="text" class="form-control" [(ngModel)]="unidad.sigla">
+        </div>
+        <div class="form-group">
+          <label for="password">Clase</label>
+          <input id="clase_global" name="clase_global" type="text" class="form-control" [(ngModel)]="unidad.clase_global">
+        </div>
+        <div class="form-group">
+          <label for="clasificacion">Clasificacion</label>
+          <input id="clasificacion" name="clasificacion" type="text" class="form-control" [(ngModel)]="unidad.clasificacion">
+        </div>
+        <div class="form-group">
+          <label for="direccion">Direccion</label>
+          <textarea id="direccion" name="direccion" class="form-control" [(ngModel)]="unidad.direccion" rows="5"></textarea>
+        </div>
+        <button type="submit" *ngIf="accion === 'crear'" class="btn btn-primary btn-lg btn-block mb-4" (click)="crearUnidad();heroForm.reset();" [disabled]="!heroForm.form.valid">
+          Crear Unidad
+        </button>
+        <button type="submit" *ngIf="accion === 'editar'" class="btn btn-primary btn-lg btn-block mb-4" (click)="modificarUnidad();" [disabled]="!heroForm.form.valid">
+          Modificar Unidad
+        </button>
+      </form>
+    </div>
+    <!--
+    <div class="col-6">
+      <pre>
+        {{ unidad | json }}
+      </pre>
+    </div>
+    -->
+  </div>
+</div>

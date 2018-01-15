@@ -51,9 +51,11 @@ var routes = function (Modelo) {
             });
         })
         .patch(function (req, res) {
+            
+            console.log(req.body);
+
             if (req.body._id)
                 delete req.body._id;
-
             for (var p in req.body) {
                 req.modelo[p] = req.body[p];
             }

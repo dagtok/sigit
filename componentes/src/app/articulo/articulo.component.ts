@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 // Servicio para gestion de categorias de productos
@@ -12,16 +13,46 @@ import { Articulo, Categoria, Modelo } from '../_models/index';
 })
 
 export class ArticuloComponent implements OnInit {
+  accion: String;
+  articulo_id: String;
   articulo: Articulo;
   categorias: Array<Categoria>;
 
-  constructor(public articuloServicio: ArticuloService, public categoriasServicio: CategoriaService) {
-    this.categoriasServicio.listar().subscribe(data => {
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    public articuloServicio: ArticuloService,
+    public categoriasServicio: CategoriaService) {
+    this.categoriasServicio.obtenerNombres().subscribe(data => {
       this.categorias = data;
     }).closed;
-    this.inicializarArticulo();
+    this.obtenerAccionARealizar();
   }
   ngOnInit() {
+  }
+
+  obtenerAccionARealizar() {
+    const tmp_accion = this.route.snapshot.url[2].path && this.route.snapshot.url[2].path;
+
+    this.route.params.subscribe(params => {
+      if (params.articulo_id) {
+        this.articulo_id = params.articulo_id;
+      }
+    });
+
+    if (tmp_accion === 'crear') {
+      this.accion = 'crear';
+      this.inicializarArticulo();
+    } else if (tmp_accion === 'editar') {
+      this.accion = 'editar';
+      this.articuloServicio.obtenerArticuloPorId(this.articulo_id).subscribe(articulo => {
+        this.articulo = articulo;
+      });
+    } else if (tmp_accion === 'eliminar') {
+      this.accion = 'eliminar';
+      this.articuloServicio.eliminar(this.articulo_id).subscribe(response => {
+        this.router.navigate(['/admin/articulo/listar-todos']);
+      });
+    }
   }
 
   inicializarArticulo() {
@@ -35,6 +66,18 @@ export class ArticuloComponent implements OnInit {
   asignarValorDeAtributo(_valor_atributo: string, _posicion: number) {
     this.articulo.propiedades[_posicion]['valor'] = _valor_atributo;
     this.articulo.propiedades[_posicion]['token'] = this.generarToken(_valor_atributo);
+  }
+
+  modificarArticulo() {
+    this.articuloServicio.modificarArticulo(this.articulo)
+      .subscribe(
+      res => {
+        this.router.navigate(['/admin/articulo/listar-todos']);
+      },
+      err => {
+        console.log('Error occured');
+      }
+      );
   }
 
   crearArticulo() {

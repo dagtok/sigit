@@ -1,0 +1,52 @@
+<app-encabezado></app-encabezado>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="mb-4 mt-4" *ngIf="accion === 'crear'">Crear Categoría.</h1>
+            <h1 class="mb-4 mt-4" *ngIf="accion === 'editar'">Editar Categoría.</h1>
+        </div>
+        <div class="offset-2 col-8" *ngIf="model">
+            <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+                <div class="form-group">
+                    <label for="categoria">Nombre de la categoría</label>
+                    <input type="text" class="form-control" id="categoria" name="categoria" (ngModelChange)="asignarTokenACategoria($event)"
+                        required [(ngModel)]="model.categoria" #categoria="ngModel">
+                    <div [hidden]="categoria.valid || categoria.pristine" class="alert alert-danger">
+                        Nombre de la categoria
+                    </div>
+                </div>
+                <hr>
+                <h3>Caracteristicas</h3>
+                <ul>
+                    <li *ngFor="let propiedad of model.propiedades; let i = index;">
+                        <div class="d-flex">
+                            <input type="text" class="form-control" required name="propiedades{{i}}" id="propiedades{{i}}" (focus)="buscarAtributo($event.target.value)"
+                                (blur)="agregarAtributo($event.target.value)" (ngModelChange)="actualizarTokenAtributo($event, i)"
+                                [(ngModel)]="model.propiedades[i].nombre">
+                            <button (click)="borrarPropiedad(i)">
+                                Borrar
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="btn btn-outline-dark btn-block mt-1 mb-5" (click)="agregarNuevaPropiedad()" type="button">Agregar Nueva Caracteristica</button>
+                    </li>
+                </ul>
+                <button type="submit" *ngIf="accion === 'crear'" class="btn btn-primary btn-lg btn-block mb-4" (click)="crearCategoria();heroForm.reset();"
+                    [disabled]="!heroForm.form.valid">
+                    Registrar Categoria
+                </button>
+                <button type="submit" *ngIf="accion === 'editar'" class="btn btn-primary btn-lg btn-block mb-4" (click)="modificarCategoria();"
+                    [disabled]="!heroForm.form.valid">
+                    Modificar Categoria
+                </button>
+            </form>
+        </div>
+        <!--
+        <div class="col-6">
+            <pre>{{ model | json}}</pre>
+        </div>
+        -->
+    </div>
+</div>

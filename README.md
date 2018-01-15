@@ -207,3 +207,37 @@ sudo npm install
 db.clasificaciones.find().forEach(function(d){ db.getSiblingDB('sigit')['unidad_clasificaciones'].insert(d); });
 
 db.usuarios.find().forEach(function(d){ db.getSiblingDB('sigit')['usuarios'].insert(d); });
+
+# Conocer la version de angular
+ng --version
+
+# Actualizar angular a nivel global
+sudo npm uninstall -g @angular/cli
+sudo npm cache clean
+sudo npm install -g @angular/cli@latest
+# if sudo npm version is > 5 then use `sudo npm cache verify` to avoid errors (or to avoid using --force)
+
+# Actualizar angular a nivel local
+sudo rm -rf node_modules
+sudo npm uninstall --save-dev angular-cli
+sudo npm install --save-dev @angular/cli@latest
+sudo npm install
+
+
+sudo npm install typescript@2.4 --save-dev
+sudo npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest --save
+
+
+sudo npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@'^5.0.0' typescript@2.4.2 rxjs@'^5.5.2' --save
+
+
+"@angular-devkit/core": "0.0.25",
+    "@angular-devkit/schematics": "0.0.48",
+    
+    "core-js": "^2.4.1",
+    "ngx-toastr": "^8.1.0",
+    "rxjs": "^5.1.0",
+    "toastr": "^2.1.4",
+    "zone.js": "^0.8.4"
+
+npm install typescript@2.4.2 --save-exact

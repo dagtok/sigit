@@ -51,8 +51,6 @@ var routes = function(Pedido){
             });
         })
         .patch(function(req,res){
-            // console.log(req.headers);
-            // Date.now
             if(req.body._id)
                 delete req.body._id;
             

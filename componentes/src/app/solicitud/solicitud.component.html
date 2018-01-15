@@ -1,33 +1,25 @@
+<app-encabezado-usuario></app-encabezado-usuario>
 <div class="row realizar-solicitud">
-    <div class="col-12">
-        <h1>
-            Realizar Solicitud
-        </h1>
-        <!--
-            <p>PRODUCTOS</p>
-            <pre>
-            {{ catalogoProductos | json }}
-            </pre>
-        -->
+    <div class="col-12 text-center">
         <div class="alert alert-warning" *ngIf="errorHttp">
             <h1>Error</h1>
             <pre>
                 {{ errorHttp | json }}
             </pre>
         </div>
-        <!-- 
-         -->
     </div>
-    <div class="col-6">
+    <div class="col-8">
         <div class="row">
+            <div class="col-12 text-center">
+                <h1>
+                    Realizar Solicitud
+                </h1>
+            </div>
             <!-- BUSQUEDA -->
             <div class="col-12">
-                <h4>
-                    Catalogo de Productos
-                </h4>
                 <hr>
                 <h4 class="titulo-seccion">
-                    1. Ingresa nombre o categoria del producto a buscar.
+                    1. Ingresa nombre o categoria del producto.
                 </h4>
                 <div id="busqueda">
                     <div class="input-group col-md-12">
@@ -41,67 +33,28 @@
                     </div>
                 </div>
             </div>
-            <!-- CATEGORIA
-                        <div class="row">
-                        
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>Que pertenezcan a la categoria...</h4>
-                                    <hr>
-                                </div>
-                            </div>
-                            
-                                <div class="row">
-                                    <div class="col-md-3 text-center">
-                                        <div class="articulo">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <div class="articulo">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <div class="articulo">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 text-center">
-                                        <div class="articulo">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        </div>
-                    -->
             <!-- PRODUCTOS -->
             <div class="col-md-12">
                 <hr>
                 <h4 class="titulo-seccion">
                     2. Elige los articulos que deseas agregar en tu pedido.
                 </h4>
-                <!--
-                    *ngIf="(productos.length > 0 && terminoDeBusqueda.length > 0)" 
-                -->
                 <p *ngIf="catalogoProductos">
                     {{ catalogoProductos.length }} articulos del catalogo que contienen la palabra "{{ terminoDeBusqueda }}" en el nombre
                 </p>
                 <div class="row">
                     <div class="col-6 text-center" *ngFor="let producto of catalogoProductos; let i = index;">
-                        <div class="articulo">
+                        <div class="articulo mt-3">
                             <a [routerLink]="['producto/detalles' , producto.id ]">
-                                {{producto.categoria}} {{producto.nombre}}
+                                {{producto.categoria}}<br>
+                                {{producto.nombre}}
                             </a>
                             <br>
-                            <button (click)="mostrarDetalleArticulo(producto, i)" data-toggle="modal" data-target="#exampleModal">
-                                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                            <button class="btn mt-1" (click)="mostrarDetalleArticulo(producto, i)" data-toggle="modal" data-target="#verDetalleModal">
+                                <i class="fa fa-address-card-o" aria-hidden="true"></i> Ver detalle
                             </button>
-                            <br>
-                            <button class="btn" (click)="agregarArticuloAlCarrito(producto)" data-toggle="tooltip" title="Hooray!">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Agregar a pedido
+                            <button class="btn mt-1" (click)="agregarArticuloAlCarrito(producto)" data-toggle="tooltip" title="Hooray!">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Agregar
                             </button>
                         </div>
                     </div>
@@ -109,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
         <div class="resumen-pedido">
             <h4 class="text-center">
                 Tu solicitud
@@ -151,20 +104,22 @@
             </div>
         </div>
     </div>
+    <!-- 
     <div class="col-3">
         <pre>
             {{ pedido | json }}
         </pre>
     </div>
+    -->
 </div>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade bd-example-modal-lg" id="verDetalleModal" tabindex="-1" role="dialog" aria-labelledby="verDetalleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content" *ngIf="detalleArticulo">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">
+                <h3 class="modal-title" id="verDetalleModalLabel">
                     {{ detalleArticulo.nombre }} - {{ detalleArticulo.categoria }}
                 </h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
