@@ -18,7 +18,7 @@ var pedidoController = function (Pedido) {
             Pedido.count({
                 'unidad.clave_ur': tmp_pedido.unidad.clave_ur
             }, function (err, numero_pedidos) {
-                if(numero_pedidos == 0) { //Si es la primera vez que la unidad intenta registrar el pedido    
+                if (numero_pedidos == 0) { //Si es la primera vez que la unidad intenta registrar el pedido    
                     pedido.save(function (err, _pedido) {
                         tmp_pedido.articulos.forEach(articulo => {
                             var anexo = new AnexoModel();
@@ -37,10 +37,10 @@ var pedidoController = function (Pedido) {
                     res.status(201);
                     res.send(pedido);
 
-                } else if(numero_pedidos >= 1){
+                } else if (numero_pedidos >= 1) {
                     res.status(500);
                     res.send({
-                        descripcion:'Su Centro o Unidad ya tiene una solicitud en proceso'
+                        descripcion: 'Su Centro o Unidad ya tiene una solicitud en proceso'
                     });
                 }
             });
@@ -48,13 +48,18 @@ var pedidoController = function (Pedido) {
     }
 
     var get = function (req, res) {
-
         var query = {};
-
         // Si el usuario busca por genero 
-        if (req.query.estado) {
-            query.estado = req.query.genre;
+        // console.log(req.query.clave_ur);
+
+        if (req.query.clave_ur) {
+            query = {
+                'unidad.clave_ur': req.query.clave_ur
+            };
         }
+
+        console.log(query);
+
         Pedido.find(query, function (err, pedidos) {
 
             if (err)

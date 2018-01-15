@@ -1,3 +1,20 @@
-<p>
-  solicitudes works!
-</p>
+<app-encabezado-usuario></app-encabezado-usuario>
+<div class="row">
+  <div class="col-12">
+    <input type="text" class="form-control">
+  </div>
+  <div class="col-3 text-center" *ngFor="let pedido of pedidos">
+    <div class="pedido">
+      <!--
+        <pre>
+          {{ pedido | json }}
+        </pre>
+      -->
+      <br> {{ pedido.unidad.nombre }}
+      <br> {{ pedido.creado }}
+      <br> Articulos: {{ pedido.articulos.length }}
+      <br> <a class="btn btn-primary" [routerLink]="[ '/solicitud/validar', pedido._id ]">Validar</a>
+      <a class="btn btn-primary" [routerLink]="[ '/solicitud/seguimiento', pedido._id ]">Seguimiento</a>
+    </div>
+  </div>
+</div>

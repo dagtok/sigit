@@ -12,9 +12,11 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { SolicitudValidarComponent } from './solicitud-validar/solicitud-validar.component';
 import { ReporteAnexoTecnicoComponent } from './reporte-anexo-tecnico/reporte-anexo-tecnico.component';
 import { ArticuloListarTodosComponent } from './articulo-listar-todos/articulo-listar-todos.component';
-import { PedidoListarTodosComponent } from './pedido-listar-todos/pedido-listar-todos.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 import { CategoriaListarTodosComponent } from './categoria-listar-todos/categoria-listar-todos.component';
 import { UsuarioListarTodosComponent } from './usuario-listar-todos/usuario-listar-todos.component';
+import { SolicitudesComponent } from './solicitudes/solicitudes.component';
+import { SolicitudSeguimientoComponent } from './solicitud-seguimiento/solicitud-seguimiento.component';
 
 import { ReporteComponent } from './reporte/reporte.component';
 
@@ -31,6 +33,8 @@ import { UnidadComponent } from 'app/unidad/unidad.component';
 const appRoutes: Routes = [
     { path: '', component: SolicitudComponent, canActivate: [AuthGuard], pathMatch: 'full' },
     { path: 'solicitud/crear', component: SolicitudComponent, canActivate: [AuthGuard] },
+    { path: 'solicitudes', component: SolicitudesComponent, canActivate: [AuthGuard] },
+    { path: 'solicitud/seguimiento/:pedido_id', component: SolicitudSeguimientoComponent, canActivate: [AuthGuard] },
     { path: 'solicitud/validar/:pedido_id', component: SolicitudValidarComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -45,7 +49,7 @@ const appRoutes: Routes = [
     { path: 'admin/articulo/eliminar/:articulo_id', component: ArticuloComponent, canActivate: [AuthGuard] },
     { path: 'admin/articulo/listar-todos', component: ArticuloListarTodosComponent, canActivate: [AuthGuard] },
 
-    { path: 'admin/pedido/listar-todos', component: PedidoListarTodosComponent, canActivate: [AuthGuard] },
+    { path: 'admin/pedido/listar-todos', component: PedidosComponent, canActivate: [AuthGuard] },
 
     { path: 'admin/reportes', component: ReporteComponent, canActivate: [AuthGuard] },
     { path: 'admin/reporte/anexo-tecnico', component: ReporteAnexoTecnicoComponent, canActivate: [AuthGuard] },
@@ -68,6 +72,7 @@ const appRoutes: Routes = [
     // { path:'formatos', component: FormatosComponent },
     // { path:'solicitud', component: FormatoEditarComponent },
     // otherwise redirect to home
+
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

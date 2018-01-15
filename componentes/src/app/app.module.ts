@@ -34,6 +34,7 @@ import { EncabezadoUsuarioComponent } from './encabezado-usuario/encabezado-usua
 
 // Faltan de revisar
 import { SolicitudComponent } from './solicitud/solicitud.component';
+
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { DireccionComponent } from './direccion/direccion.component';
@@ -48,7 +49,6 @@ import { ReporteAnexoTecnicoComponent } from './reporte-anexo-tecnico/reporte-an
 import { routing } from './app.routing';
 import { ReporteEstudioFactibilidadComponent } from './reporte-estudio-factibilidad/reporte-estudio-factibilidad.component';
 import { ArticuloListarTodosComponent } from './articulo-listar-todos/articulo-listar-todos.component';
-import { PedidoListarTodosComponent } from './pedido-listar-todos/pedido-listar-todos.component';
 import { CategoriaListarTodosComponent } from './categoria-listar-todos/categoria-listar-todos.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { UsuarioListarTodosComponent } from './usuario-listar-todos/usuario-listar-todos.component';
@@ -56,6 +56,7 @@ import { UnidadComponent } from './unidad/unidad.component';
 import { UnidadListarTodosComponent } from './unidad-listar-todos/unidad-listar-todos.component';
 import { SolicitudSeguimientoComponent } from './solicitud-seguimiento/solicitud-seguimiento.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 
 
@@ -87,14 +88,14 @@ import { SolicitudesComponent } from './solicitudes/solicitudes.component';
         UsuarioComponent,
         ReporteEstudioFactibilidadComponent,
         ArticuloListarTodosComponent,
-        PedidoListarTodosComponent,
         CategoriaListarTodosComponent,
         ReporteComponent,
         UsuarioListarTodosComponent,
         UnidadComponent,
         UnidadListarTodosComponent,
         SolicitudSeguimientoComponent,
-        SolicitudesComponent
+        SolicitudesComponent,
+        PedidosComponent
     ],
     providers: [
         ArticuloService,

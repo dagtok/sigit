@@ -1,3 +1,113 @@
-<p>
-  solicitud-seguimiento works!
-</p>
+<app-encabezado-usuario></app-encabezado-usuario>
+<div class="row">
+  <div class="col-12 text-center mt-5 mb-3">
+    <h1>PROCESO DE VALIDACIÓN</h1>
+    <!--
+    <pre>
+      {{ solicitud | json }}
+    </pre>
+    -->
+  </div>
+  <div class="col-6">
+    <table>
+      <tr>
+        <td>NOMBRE</td>
+        <td>{{ solicitud.unidad.nombre }}</td>
+      </tr>
+      <tr>
+        <td>SIGLA</td>
+        <td>{{ solicitud.unidad.sigla }}</td>
+      </tr>
+      <tr>
+        <td>DIRECCIÓN</td>
+        <td>{{ solicitud.unidad.direccion }}</td>
+      </tr>
+    </table>
+
+    <h3 class="text-center">Progreso de validación</h3>
+    <ul class="timeline">
+      <li>
+        <div class="timeline-badge">
+          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">Creación de la Solicitud</h4>
+            <p>
+              <small class="text-muted">
+                <i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small>
+            </p>
+          </div>
+          <div class="timeline-body">
+            <p>Juan</p>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="timeline-badge warning">
+          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">Validacion por jefe de la UDI.</h4>
+          </div>
+          <div class="timeline-body">
+            <p>Juan</p>
+          </div>
+        </div>
+      </li>
+      <!--
+      <li>
+        <div class="timeline-badge danger">
+          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">Validacion del Subdirector Academico</h4>
+          </div>
+          <div class="timeline-body">
+            <p>Juan</p>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="timeline-badge danger">
+          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">Validacion del Director.</h4>
+          </div>
+          <div class="timeline-body">
+            <p>Juan</p>
+          </div>
+        </div>
+      </li>
+      -->
+    </ul>
+  </div>
+  <div class="col-6">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <th>CANTIDAD</th>
+        <th>TIPO</th>
+        <th>DESCRIPCIÓN TÉCNICA</th>
+      </thead>
+      <tr *ngFor="let articulo of solicitud.articulos;">
+        <td>
+          {{ articulo.cantidad }}
+        </td>
+        <td>
+          {{ articulo.categoria }} {{ articulo.nombre }}
+        </td>
+        <td>
+          <ul *ngFor="let propiedad of articulo.propiedades">
+            <li>{{ propiedad.valor }}: {{ propiedad.nombre }}</li>
+          </ul>
+        </td>
+      </tr>
+      <!--
+      -->
+    </table>
+  </div>
+</div>

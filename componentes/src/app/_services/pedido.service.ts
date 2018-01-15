@@ -24,6 +24,16 @@ export class PedidoService {
     return this.http.get<Pedido[]>(this.API_URL + 'pedidos');
   }
 
+  obtenerPedidosPorUnidad(_unidad_id: string) {
+    // return this.http.get<Pedido[]>(this.API_URL + 'pedidos');
+    const parametros = new HttpParams().set('clave_ur', _unidad_id);
+    return this.http.get<Pedido[]>(this.API_URL + 'pedidos', { params: parametros });
+  }
+
+  obtenerPedidoPorId(_pedido_id: string) {
+    return this.http.get<Pedido[]>(this.API_URL + 'pedidos/' + _pedido_id);
+  }
+
   // Buscar producto
   buscarProductoEnCatalogo(_parametro_de_busqueda: string) {
     // this.obtenerCategorias(_parametro_de_busqueda);
