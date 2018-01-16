@@ -9,7 +9,8 @@
     -->
   </div>
   <div class="col-6">
-    <table>
+    <h3 class="text-center">Unidad Requirente</h3>
+    <table class="table table-striped">
       <tr>
         <td>NOMBRE</td>
         <td>{{ solicitud.unidad.nombre }}</td>
@@ -26,67 +27,58 @@
 
     <h3 class="text-center">Progreso de validación</h3>
     <ul class="timeline">
-      <li>
-        <div class="timeline-badge">
+      <li *ngIf="solicitud.elaboro && solicitud.elaboro.fecha != null">
+        <div class="timeline-badge bg-success">
           <i class="fa fa-check-circle-o" aria-hidden="true"></i>
         </div>
         <div class="timeline-panel">
           <div class="timeline-heading">
-            <h4 class="timeline-title">Creación de la Solicitud</h4>
+            <h4 class="timeline-title">Solicitud Presentada por Jefe de UDI</h4>
             <p>
               <small class="text-muted">
-                <i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i> {{ solicitud.elaboro.fecha }}</small>
             </p>
           </div>
           <div class="timeline-body">
-            <p>Juan</p>
+            <p>{{ solicitud.elaboro.nombre }}</p>
           </div>
         </div>
       </li>
-      <li class="timeline-inverted">
-        <div class="timeline-badge warning">
+
+      <li class="timeline-inverted" *ngIf="solicitud.autorizo && solicitud.autorizo.fecha != null">
+        <div class="timeline-badge bg-success">
           <i class="fa fa-check-circle-o" aria-hidden="true"></i>
         </div>
         <div class="timeline-panel">
           <div class="timeline-heading">
-            <h4 class="timeline-title">Validacion por jefe de la UDI.</h4>
+            <h4 class="timeline-title">Validacion por director de la Unidad.</h4>
+            <p>
+              <small class="text-muted">
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i> {{ solicitud.autorizo.fecha }}</small>
+            </p>
           </div>
           <div class="timeline-body">
-            <p>Juan</p>
+            <p>{{ solicitud.autorizo.nombre }}</p>
           </div>
         </div>
       </li>
-      <!--
-      <li>
-        <div class="timeline-badge danger">
-          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-        </div>
-        <div class="timeline-panel">
-          <div class="timeline-heading">
-            <h4 class="timeline-title">Validacion del Subdirector Academico</h4>
-          </div>
-          <div class="timeline-body">
-            <p>Juan</p>
-          </div>
-        </div>
-      </li>
-      <li class="timeline-inverted">
-        <div class="timeline-badge danger">
-          <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-        </div>
-        <div class="timeline-panel">
-          <div class="timeline-heading">
-            <h4 class="timeline-title">Validacion del Director.</h4>
-          </div>
-          <div class="timeline-body">
-            <p>Juan</p>
-          </div>
-        </div>
-      </li>
-      -->
     </ul>
+    <div class="p-3 mb-2 bg-success text-white" *ngIf="solicitud.autorizo && solicitud.autorizo.fecha != null">
+      <h3 class="text-center">
+        <i class="fa fa-truck" aria-hidden="true"></i><br>
+        La solicitud esta lista para ser enviada a tu unidad.
+      </h3>
+    </div>
   </div>
+  <!--
   <div class="col-6">
+    <pre>
+      {{ solicitud | json  }}
+    </pre>
+  </div>
+  -->
+  <div class="col-6">
+    <h3 class="text-center">Articulos Solicitados</h3>
     <table class="table table-striped">
       <thead class="thead-dark">
         <th>CANTIDAD</th>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SolicitudValidarService, AuthenticationService } from 'app/_services';
 import { Pedido, Usuario } from 'app/_models';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -17,6 +17,7 @@ export class SolicitudValidarComponent implements OnInit {
   no_articulos_validados: number;
 
   constructor(private ruta: ActivatedRoute,
+    private router: Router,
     private solicitudValidarService: SolicitudValidarService,
     public autentificacionService: AuthenticationService) {
 
@@ -70,7 +71,12 @@ export class SolicitudValidarComponent implements OnInit {
   validarPedido() {
     // console.log("El pedido antes de enviar");
     // console.log(this.pedido);
-    this.solicitudValidarService.validarPedido(this.pedido);
+    this.solicitudValidarService.validarPedido(this.pedido)
+      .subscribe(response => {
+        //console.log("La respuesta");
+        // console.log(response);
+        this.router.navigate(['/solicitudes']);
+      });
   }
 
   actualizarPorcentajeDeProgreso() {

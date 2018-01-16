@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { ArticuloService, AuthenticationService, PedidoService } from '../_services/index';
 import { Articulo, ArticuloCarrito, Pedido } from 'app/_models';
@@ -21,6 +21,7 @@ export class SolicitudComponent implements OnInit {
   pedido: Pedido;
 
   constructor(public articuloService: ArticuloService,
+    private router: Router,
     public pedidoServicio: PedidoService,
     public autentificacionService: AuthenticationService) {
     this.cargando = true;
@@ -92,7 +93,6 @@ export class SolicitudComponent implements OnInit {
   inicializarPedido() {
 
     const db_usuario = this.autentificacionService.getUserInfo(); // Obtiene informacion del local storage
-    // console.log(db_usuario);
 
     const unidad = {
       '_id': db_usuario.unidad._id,
@@ -105,7 +105,7 @@ export class SolicitudComponent implements OnInit {
     const elaboro = {
       '_id': db_usuario._id,
       'nombre': db_usuario.nombre,
-      'fecha': null
+      'fecha': new Date().toDateString()
     };
 
     const autorizo = {
@@ -121,8 +121,9 @@ export class SolicitudComponent implements OnInit {
   finalizarSolicitud() {
     this.pedidoServicio.registrarPedido(this.pedido).subscribe(data => {
       // console.log(data);
-      this.pedidoServicio.inicializarCarrito();
-      this.inicializarPedido();
+      // this.pedidoServicio.inicializarCarrito();
+      // this.inicializarPedido();
+      this.router.navigate(['/solicitudes']);
     });
   }
 

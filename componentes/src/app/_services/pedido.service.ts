@@ -31,7 +31,7 @@ export class PedidoService {
   }
 
   obtenerPedidoPorId(_pedido_id: string) {
-    return this.http.get<Pedido[]>(this.API_URL + 'pedidos/' + _pedido_id);
+    return this.http.get<Pedido>(this.API_URL + 'pedidos/' + _pedido_id);
   }
 
   // Buscar producto

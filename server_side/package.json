@@ -1,10 +1,11 @@
 {
-  "name": "BookAPI",
+  "name": "SIGIT - API",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.12.0",
+    "cors": "^2.8.4",
     "express": "^4.11.2",
     "gulp": "^3.8.11",
     "gulp-mocha": "^4.3.1",

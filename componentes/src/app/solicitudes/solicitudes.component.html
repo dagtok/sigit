@@ -1,20 +1,19 @@
 <app-encabezado-usuario></app-encabezado-usuario>
-<div class="row">
-  <div class="col-12">
-    <input type="text" class="form-control">
+<div class="row mt-4 mb-5">
+  <div class="col-12 mb-5 mt-4">
+    <h1 class="text-center">Solicitudes de insumos informaticos realizadas.</h1>
   </div>
-  <div class="col-3 text-center" *ngFor="let pedido of pedidos">
-    <div class="pedido">
-      <!--
-        <pre>
-          {{ pedido | json }}
-        </pre>
-      -->
-      <br> {{ pedido.unidad.nombre }}
-      <br> {{ pedido.creado }}
-      <br> Articulos: {{ pedido.articulos.length }}
-      <br> <a class="btn btn-primary" [routerLink]="[ '/solicitud/validar', pedido._id ]">Validar</a>
-      <a class="btn btn-primary" [routerLink]="[ '/solicitud/seguimiento', pedido._id ]">Seguimiento</a>
+  <div class="col-sm-4 mb-3" *ngFor="let pedido of pedidos">
+    <div class="card text-center">
+      <div class="card-block p-2">
+        <h3 class="card-title">{{ pedido.unidad.nombre }}</h3>
+        <p class="card-text">
+          <br> {{ pedido.creado }}
+          <br> Articulos: {{ pedido.articulos.length }}
+        </p>
+        <a class="btn btn-primary" [routerLink]="[ '/solicitud/validar', pedido._id ]">Validar</a>
+        <a class="btn btn-primary" [routerLink]="[ '/solicitud/seguimiento', pedido._id ]">Seguimiento</a>
+      </div>
     </div>
   </div>
 </div>

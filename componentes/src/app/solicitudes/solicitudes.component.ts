@@ -9,11 +9,12 @@ import { Pedido } from 'app/_models';
 })
 export class SolicitudesComponent implements OnInit {
   pedidos: Pedido[];
-  constructor(public pedidoService: PedidoService, public sesionService: AuthenticationService) { }
-
+  informacion_usuario: object;
+  constructor(public pedidoService: PedidoService, public sesionService: AuthenticationService) {
+  }
   ngOnInit() {
-    const informacion_usuario = this.sesionService.getUserInfo();
-    this.pedidoService.obtenerPedidosPorUnidad(informacion_usuario.unidad.clave_ur).subscribe(pedidos => {
+    this.informacion_usuario = this.sesionService.getUserInfo();
+    this.pedidoService.obtenerPedidosPorUnidad(this.informacion_usuario.unidad.clave_ur).subscribe(pedidos => {
       this.pedidos = pedidos;
     });
   }

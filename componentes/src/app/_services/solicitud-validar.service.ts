@@ -22,10 +22,6 @@ export class SolicitudValidarService {
     return this.http
       .patch(this.API_URL + 'pedidos/' + _pedido._id, _pedido, {
         headers: new HttpHeaders().set('Authorization_dagtok', 'some-token')
-      })
-      .subscribe(response => {
-        console.log("La respuesta");
-        console.log(response);
       });
   }
 

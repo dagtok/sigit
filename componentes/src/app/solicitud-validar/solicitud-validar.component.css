@@ -11,13 +11,16 @@ button>i.fa{
     font-size: 50px
 }
 
-.acciones-producto .validar{
-    background-color: green;
-    color: white;
+.acciones-producto button.validar{
+    background: none;
+    color: green;
 }
-.acciones-producto .rechazar{
-    background-color: red;
-    color: white;
+.acciones-producto button.rechazar{
+    background: none;
+    color: red;
+}
+.acciones-producto button i{
+ font-size: 60px;
 }
 
 .resumen-pedido{
