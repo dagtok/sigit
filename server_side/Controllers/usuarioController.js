@@ -11,16 +11,24 @@ var usuarioController = function (Usuario) {
             res.send('El campo de contraseña es requerido');
         } else {
             var query = usuario.toJSON();
-            console.log('query');
-            console.log(query);
 
             Usuario.findOne({ usuario: query.usuario, password: query.password }, function (err, usuario) {
                 if (err)
                     res.status(500).send(err);
                 else {
                     if (usuario) {
-                        // usuario.token = '1231231231';
-                        res.json(usuario);
+                        // res.json(usuario)
+                        var Pedidos = require('./../models/pedidoModel');
+                        Pedidos.count({ 'unidad.clave_ur': usuario.unidad.clave_ur }, function (err, no_pedidos) {
+                            if (err)
+                                res.status(500).send(err);
+                            else {
+                                usuario.no_pedidos = no_pedidos;
+                                console.log(no_pedidos);
+                                res.json(usuario);
+                            }
+                        });
+
                     } else {
                         res.status(500).send('El usuario no existe');
                     }

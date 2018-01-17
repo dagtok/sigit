@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PedidoService, AuthenticationService } from '../_services/index';
-import { Pedido } from 'app/_models';
+import { Pedido, Usuario } from 'app/_models';
 
 @Component({
   selector: 'app-solicitudes',
@@ -9,7 +9,7 @@ import { Pedido } from 'app/_models';
 })
 export class SolicitudesComponent implements OnInit {
   pedidos: Pedido[];
-  informacion_usuario: object;
+  informacion_usuario: Usuario;
   constructor(public pedidoService: PedidoService, public sesionService: AuthenticationService) {
   }
   ngOnInit() {

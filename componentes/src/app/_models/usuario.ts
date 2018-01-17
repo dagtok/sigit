@@ -14,6 +14,7 @@
             direccion: string,
         },
         public tipo: string,
-        public status: string
+        public status: string,
+        public no_pedidos: number
     ) { }
 }

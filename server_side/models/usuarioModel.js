@@ -9,7 +9,8 @@ var usuarioModel = new Schema({
     tipo: {type: String},
     usuario: {type: String},
     password: {type: String},
-    status: {type: String}
+    status: {type: String},
+    no_pedidos: {type: Number, default: 0}
 });
 
 module.exports= mongoose.model('Usuario', usuarioModel);

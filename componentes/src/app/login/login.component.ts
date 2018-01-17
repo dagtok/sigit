@@ -32,18 +32,24 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
-                data => {
-                    console.log('data');
-                    console.log(data.tipo);
-                    if(data.tipo == 'Administrador'){
+            data => {
+                console.log('data');
+                console.log(data.tipo);
+                if (data.tipo === 'Administrador') {
+                    this.router.navigate(['/admin/usuario/listar-todos']);
+                } else {
+                    if (data.tipo === 'Administrador') {
                         this.router.navigate(['/admin/usuario/listar-todos']);
+                    } else if ((data.tipo === 'Capturista' || data.tipo === 'Responsable') && data.no_pedidos > 0) {
+                        this.router.navigate(['/solicitudes']);
                     } else {
                         this.router.navigate([this.returnUrl]);
                     }
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+                }
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            });
     }
 }
