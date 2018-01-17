@@ -67,7 +67,7 @@ export class UsuarioComponent implements OnInit {
       clasificacion: null,
       direccion: null
     };
-    this.usuario = new Usuario(null, null, null, null, null, unidad, null, null);
+    this.usuario = new Usuario(null, null, null, null, null, unidad, null, null, null);
   }
 
   modificarUsuario() {

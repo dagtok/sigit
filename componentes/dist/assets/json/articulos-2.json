@@ -1,0 +1,51 @@
+[
+    {
+        "_id": 43,
+        "nombre": "Disco Duro de estado solido",
+        "token": "disco-duro",
+        "categoria": "CINTA DE DATOS",
+        "propiedades": [{
+                "texto": "Capacidad",
+                "nombre": "capacidad",
+                "valor": "10 GB",
+                "token": "10gb"
+            },
+            {
+                "texto": "Tecnología de grabación",
+                "nombre": "tecnologia-de-grabacion",
+                "valor": "PPT",
+                "token": "ppt"
+            },
+            {
+                "texto": "Velocidad de lectura",
+                "nombre": "velocidad-de-lectura",
+                "valor": "10 MB/S",
+                "token": "10mbs"
+            },
+            {
+                "texto": "Longitud de la cinta",
+                "nombre": "longitud-de-la-cinta",
+                "valor": "10 Metros",
+                "token": "10mtrs"
+            },
+            {
+                "texto": "Ancho de la cinta",
+                "nombre": "ancho-de-la-cinta",
+                "valor": "2 Pulgadas",
+                "token": "2plgds"
+            },
+            {
+                "texto": "Grosor de la cinta",
+                "nombre": "grosor-de-la-cinta",
+                "valor": "1 cm",
+                "token": "1cm"
+            },
+            {
+                "texto": "Formato de soporte",
+                "nombre": "formato-de-soporte",
+                "valor": "MP4",
+                "token": "mp4"
+            }
+        ]
+    }
+]
