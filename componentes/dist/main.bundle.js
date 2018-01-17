@@ -482,7 +482,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ArticuloService = (function () {
     function ArticuloService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
     ArticuloService.prototype.crearArticulo = function (_nuevoArticulo) {
         return this.http.post(this.API_URL + 'api/articulos', _nuevoArticulo);
@@ -535,7 +535,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
     AuthenticationService.prototype.login = function (usuario, password) {
         return this.http.post(this.API_URL + 'api/usuarios/login', { usuario: usuario, password: password })
@@ -587,7 +587,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var CategoriaService = (function () {
     function CategoriaService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
     CategoriaService.prototype.modificarCategoria = function (_categoria) {
         return this.http.patch(this.API_URL + 'api/categorias/' + _categoria._id, _categoria, {
@@ -686,7 +686,7 @@ var PedidoService = (function () {
     function PedidoService(http) {
         this.http = http;
         this.inicializarCarrito();
-        this.API_URL = 'http://localhost:8000/api/';
+        this.API_URL = 'http://104.236.191.171:8000/api/';
     }
     PedidoService.prototype.inicializarCarrito = function () {
         this.articulosCarrito = [];
@@ -789,7 +789,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ReportesService = (function () {
     function ReportesService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/api/';
+        this.API_URL = 'http://104.236.191.171:8000/api/';
     }
     ReportesService.prototype.obtenerReporteAnexoTecnico = function () {
         return this.http.get(this.API_URL + 'reportes/anexo-tecnico');
@@ -829,7 +829,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SolicitudValidarService = (function () {
     function SolicitudValidarService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/api/';
+        this.API_URL = 'http://104.236.191.171:8000/api/';
     }
     SolicitudValidarService.prototype.buscarPedido = function (_pedido_id) {
         // let parametros = new HttpParams().set('_id', _pedido_id);
@@ -874,7 +874,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var UnidadService = (function () {
     function UnidadService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
     UnidadService.prototype.obtenerCatalogoUnidades = function () {
         return this.http.get(this.API_URL + "api/unidades");
@@ -988,7 +988,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var UsuarioService = (function () {
     function UsuarioService(http) {
         this.http = http;
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
     UsuarioService.prototype.crearUsuario = function (_nuevoUsuario) {
         return this.http.post(this.API_URL + 'api/usuarios', _nuevoUsuario);
