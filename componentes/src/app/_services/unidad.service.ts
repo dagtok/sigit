@@ -7,7 +7,7 @@ export class UnidadService {
     API_URL: string;
 
     constructor(private http: HttpClient) {
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
     public obtenerCatalogoUnidades() {
         return this.http.get<Unidad[]>(`${this.API_URL}api/unidades`);

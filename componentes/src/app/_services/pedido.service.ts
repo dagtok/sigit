@@ -9,7 +9,7 @@ export class PedidoService {
   articulosCarrito: Array<ArticuloCarrito>;
   constructor(private http: HttpClient) {
     this.inicializarCarrito();
-    this.API_URL = 'http://localhost:8000/api/';
+    this.API_URL = 'http://104.236.191.171:8000/api/';
   }
 
   inicializarCarrito() {

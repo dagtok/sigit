@@ -9,7 +9,7 @@ export class AuthenticationService {
     API_URL: string;
 
     constructor(private http: HttpClient) {
-        this.API_URL = 'http://localhost:8000/';
+        this.API_URL = 'http://104.236.191.171:8000/';
     }
 
     login(usuario: string, password: string) {
