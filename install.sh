@@ -68,3 +68,15 @@ CREAR UNA LLAVE SSH DESDE EL SERVIDOR
 
 curl http://localhost:8000
 
+cp -a /sigit/componentes/dist. /var/www/html/
+
+cp -R dist /var/www/html/
+
+
+sudo mongoexport --db sigit -c restaurants --out newdbexport.json
+
+
+mongodump -d sigit -o dany
+
+
+mongorestore -d sigit sigit
