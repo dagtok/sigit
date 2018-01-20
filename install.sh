@@ -80,3 +80,6 @@ mongodump -d sigit -o dany
 
 
 mongorestore -d sigit sigit
+
+
+pm2 start app.js --name sigit_backend

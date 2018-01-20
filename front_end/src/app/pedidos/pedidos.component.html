@@ -1,0 +1,27 @@
+<app-encabezado></app-encabezado>
+<div class="row">
+  <div class="col-12 text-center mb-5 mt-4">
+    <div class="d-flex justify-content-between">
+      <div>&nbsp;</div>
+      <div>
+        <h1>Solicitudes de Insumos Por Centro o Unidad Academica</h1>
+      </div>
+      <div>
+      </div>
+    </div>
+    <input type="text" id="buscar-pedido" name="search" placeholder="Buscar por nombre la unidad o centro.">
+  </div>
+  <div class="col-sm-4 mb-3" *ngFor="let pedido of pedidos">
+    <div class="card text-center">
+      <div class="card-block p-2">
+        <h3 class="card-title">{{ pedido.unidad.sigla }}</h3>
+        <p class="card-text">
+          <br> {{ pedido.unidad.nombre }}
+          <br> {{ pedido.creado }}
+          <br> Articulos: {{ pedido.articulos.length }}
+        </p>
+        <a class="btn btn-primary" [routerLink]="[ '/solicitud/seguimiento', pedido._id ]">Seguimiento</a>
+      </div>
+    </div>
+  </div>
+</div>
