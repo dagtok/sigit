@@ -3,13 +3,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Usuario } from 'app/_models';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
     API_URL: string;
 
     constructor(private http: HttpClient) {
-        this.API_URL = 'http://104.236.191.171:8000/';
+        if (environment.production) {
+            this.API_URL = 'http://' + environment.api_url + ':8000/';
+        } else if (environment.production === false) {
+            this.API_URL = 'http://' + environment.dev_api_url + ':8000/';
+        }
     }
 
     login(usuario: string, password: string) {

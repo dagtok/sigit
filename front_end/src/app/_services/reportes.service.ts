@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ReportesService {
@@ -7,7 +8,11 @@ export class ReportesService {
   articulos: Array<object>;
 
   constructor(private http: HttpClient) {
-    this.API_URL = 'http://104.236.191.171:8000/api/';
+    if (environment.production) {
+      this.API_URL = 'http://' + environment.api_url + ':8000/';
+    } else if (environment.production === false) {
+      this.API_URL = 'http://' + environment.dev_api_url + ':8000/';
+    }
   }
 
   obtenerReporteAnexoTecnico() {

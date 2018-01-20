@@ -62,8 +62,6 @@ export class SolicitudComponent implements OnInit {
   }
 
   eliminarProductoCarrito(_posicion: number) {
-    // alert("Boorar" + _posicion);
-    // array.splice(index, 1);
     this.pedidoServicio.borrarArticuloDeCarrito(_posicion);
   }
 
@@ -121,9 +119,6 @@ export class SolicitudComponent implements OnInit {
 
   finalizarSolicitud() {
     this.pedidoServicio.registrarPedido(this.pedido).subscribe(data => {
-      // console.log(data);
-      // this.pedidoServicio.inicializarCarrito();
-      // this.inicializarPedido();
       this.router.navigate(['/solicitudes']);
     });
   }

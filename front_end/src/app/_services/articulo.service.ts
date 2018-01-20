@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Articulo } from 'app/_models';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ArticuloService {
@@ -8,7 +9,11 @@ export class ArticuloService {
   API_URL: string;
 
   constructor(private http: HttpClient) {
-    this.API_URL = 'http://104.236.191.171:8000/';
+    if (environment.production) {
+      this.API_URL = 'http://' + environment.api_url + ':8000/';
+    } else if (environment.production === false) {
+      this.API_URL = 'http://' + environment.dev_api_url + ':8000/';
+    }
   }
 
   buscarArticulo(_parametro_de_busqueda: string) {

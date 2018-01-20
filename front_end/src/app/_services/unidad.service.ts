@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { UnidadClasificacion, Unidad } from '../_models/index';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UnidadService {
     API_URL: string;
 
     constructor(private http: HttpClient) {
-        this.API_URL = 'http://104.236.191.171:8000/';
+        if (environment.production) {
+            this.API_URL = 'http://' + environment.api_url + ':8000/';
+        } else if (environment.production === false) {
+            this.API_URL = 'http://' + environment.dev_api_url + ':8000/';
+        }
     }
     public obtenerCatalogoUnidades() {
         return this.http.get<Unidad[]>(`${this.API_URL}api/unidades`);

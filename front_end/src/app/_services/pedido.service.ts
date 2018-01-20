@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Articulo, ArticuloCarrito, Categoria, Pedido } from '../_models/index';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PedidoService {
@@ -9,7 +10,11 @@ export class PedidoService {
   articulosCarrito: Array<ArticuloCarrito>;
   constructor(private http: HttpClient) {
     this.inicializarCarrito();
-    this.API_URL = 'http://104.236.191.171:8000/api/';
+    if (environment.production) {
+      this.API_URL = 'http://' + environment.api_url + ':8000/';
+    } else if (environment.production === false) {
+      this.API_URL = 'http://' + environment.dev_api_url + ':8000/';
+    }
   }
 
   buscarPedido(_parametro_de_busqueda: string) {
