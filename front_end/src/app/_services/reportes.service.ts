@@ -16,10 +16,10 @@ export class ReportesService {
   }
 
   obtenerReporteAnexoTecnico() {
-    return this.http.get<object[]>(this.API_URL + 'reportes/anexo-tecnico');
+    return this.http.get<object[]>(this.API_URL + 'api/reportes/anexo-tecnico');
   }
 
   obtenerReporteEstudioFactibilidad() {
-    return this.http.get<object[]>(this.API_URL + 'reportes/estudio-factibilidad');
+    return this.http.get<object[]>(this.API_URL + 'api/reportes/estudio-factibilidad');
   }
 }

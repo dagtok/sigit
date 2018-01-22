@@ -68,7 +68,7 @@ CREAR UNA LLAVE SSH DESDE EL SERVIDOR
 
 curl http://localhost:8000
 
-cp -a /sigit/componentes/dist. /var/www/html/
+
 
 cp -R dist /var/www/html/
 
@@ -83,3 +83,23 @@ mongorestore -d sigit sigit
 
 
 pm2 start app.js --name sigit_backend
+
+sudo cat /etc/nginx/sites-available/default
+
+#liberar cambios a produccion
+ng build
+ssh root@104.236.191.171
+
+git reset --hard 
+git pull origin master
+
+rm -R /var/www/html/dist
+cd
+cp -a sigit/front_end/dist/. /var/www/html/dist/
+cd /var/www/html/
+ls -l
+sudo service nginx restart
+
+pm2 restart sigit_backend
+
+pm2 listpm2 info 
