@@ -90,6 +90,7 @@ sudo cat /etc/nginx/sites-available/default
     ng build
     ssh root@104.236.191.171
     cd
+    cd sigit
     git reset --hard 
     git pull origin master
     rm -R /var/www/html/dist
