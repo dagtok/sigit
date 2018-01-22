@@ -834,10 +834,10 @@ var ReportesService = (function () {
         }
     }
     ReportesService.prototype.obtenerReporteAnexoTecnico = function () {
-        return this.http.get(this.API_URL + 'reportes/anexo-tecnico');
+        return this.http.get(this.API_URL + 'api/reportes/anexo-tecnico');
     };
     ReportesService.prototype.obtenerReporteEstudioFactibilidad = function () {
-        return this.http.get(this.API_URL + 'reportes/estudio-factibilidad');
+        return this.http.get(this.API_URL + 'api/reportes/estudio-factibilidad');
     };
     ReportesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),

@@ -87,19 +87,23 @@ pm2 start app.js --name sigit_backend
 sudo cat /etc/nginx/sites-available/default
 
 #liberar cambios a produccion
-ng build
-ssh root@104.236.191.171
+    ng build
+    ssh root@104.236.191.171
+    cd
+    git reset --hard 
+    git pull origin master
+    rm -R /var/www/html/dist
+    cd
+    cp -a sigit/front_end/dist/. /var/www/html/dist/
+    cd /var/www/html/
+    ls -l
+    sudo service nginx restart
+    pm2 restart sigit_backend
+    pm2 list
+    pm2 info sigit_backend
 
-git reset --hard 
-git pull origin master
-
-rm -R /var/www/html/dist
-cd
-cp -a sigit/front_end/dist/. /var/www/html/dist/
-cd /var/www/html/
-ls -l
-sudo service nginx restart
-
-pm2 restart sigit_backend
-
-pm2 listpm2 info 
+    #server side 
+    cd
+    git reset --hard 
+    git pull origin master
+    pm2 restart sigit_backend
