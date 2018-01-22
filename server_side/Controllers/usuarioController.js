@@ -17,14 +17,12 @@ var usuarioController = function (Usuario) {
                     res.status(500).send(err);
                 else {
                     if (usuario) {
-                        // res.json(usuario)
                         var Pedidos = require('./../models/pedidoModel');
                         Pedidos.count({ 'unidad.clave_ur': usuario.unidad.clave_ur }, function (err, no_pedidos) {
                             if (err)
                                 res.status(500).send(err);
                             else {
                                 usuario.no_pedidos = no_pedidos;
-                                console.log(no_pedidos);
                                 res.json(usuario);
                             }
                         });
@@ -41,9 +39,6 @@ var usuarioController = function (Usuario) {
         var usuario = new Usuario(req.body);
         var tmp_usuario = {};
 
-        console.log('req.body');
-        console.log(req.body);
-
         if (!req.body.usuario) {
             res.status(400);
             res.send('El usuario es requerido');
@@ -55,13 +50,9 @@ var usuarioController = function (Usuario) {
             }, function (err, numero_usuarios) {
                 if (numero_usuarios == 0) { //Si es la primera vez que la unidad intenta registrar el usuario    
                     usuario.save(function (err, _usuario) {
-                        // console.log("Registrando datos del anexo");
-                        // console.log(_usuario._id);
-                        // console.log("END >>>");
+                        res.status(201);
+                        res.send(usuario);
                     });
-                    res.status(201);
-                    res.send(usuario);
-
                 } else if (numero_usuarios >= 1) {
                     res.status(500);
                     res.send({
@@ -73,19 +64,31 @@ var usuarioController = function (Usuario) {
     }
 
     var get = function (req, res) {
-
-        var query = {};
-
-        // Si el usuario busca por genero 
-        if (req.query.estado) {
-            query.estado = req.query.genre;
+        var consulta;
+        var pagina = 1;
+        var tamanio_pagina = 50;
+        
+        if (req.query.pagina) {
+            pagina = req.query.pagina;
         }
-        Usuario.find(query, function (err, usuarios) {
 
+        if (req.query.tamanio_pagina) {
+            tamanio_pagina = req.query.tamanio_pagina;
+        }
+
+        if (req.query.buscar) {
+            var parametro_busqueda = req.query.buscar;
+            consulta = Usuario.find({ $text: { $search: parametro_busqueda } }, { score: { $meta: "textScore" } }).sort({ score: { $meta: "textScore" } });
+        } else {
+            consulta = Usuario.find();
+        }
+
+        consulta.skip(tamanio_pagina*(pagina-1)).limit(tamanio_pagina);
+
+        consulta.exec(function (err, usuarios) {
             if (err)
                 res.status(500).send(err);
             else {
-
                 var returnUsuarios = [];
                 usuarios.forEach(function (element, index, array) {
                     var newUsuario = element.toJSON();
@@ -96,6 +99,7 @@ var usuarioController = function (Usuario) {
                 res.json(returnUsuarios);
             }
         });
+
     }
 
     return {

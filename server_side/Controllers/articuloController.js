@@ -14,17 +14,16 @@ var articuloController = function(Articulo){
     }
 
     var get = function(req,res){
-
-        var query = {};
-
-        // Si el usuario busca por genero 
-        console.log(req.query.token);
-
-        if (req.query.token) {
-            // console.log("BUSCANDO");
-            query = { token: new RegExp('^'+req.query.token, "i") };
+        var consulta;
+        
+        if (req.query.buscar) {
+            var parametro_busqueda = req.query.buscar;
+            consulta = Articulo.find({ $text: { $search: parametro_busqueda } }, { score: { $meta: "textScore" } }).sort({ score: { $meta: "textScore" } });
+        } else {
+            consulta = Articulo.find();
         }
-        Articulo.find(query, function(err,articulos){
+
+        consulta.exec(function(err,articulos){
 
             if(err)
                 res.status(500).send(err);

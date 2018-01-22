@@ -15,9 +15,9 @@
             <option *ngFor="let categoria of categorias" [value]="categoria.categoria" [selected]="articulo.categoria === categoria.categoria">{{categoria.categoria}}</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="articulo.categoria">
           <label for="nombre">Nombre del Modelo</label>
-          <input type="text" class="form-control" id="nombre" required placeholder="EJ: TIPO 1" [(ngModel)]="articulo.nombre" name="nombre"
+          <input type="text" class="form-control form-control-lg" id="nombre" required placeholder="EJ: TIPO 1" [(ngModel)]="articulo.nombre" name="nombre"
             (ngModelChange)="asignarTokenAlNombre($event)" #nombre="ngModel" #spy>
           <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
             Nombre del articulo es requerido

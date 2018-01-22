@@ -1,15 +1,27 @@
 var unidadController = function (Unidad) {
     var get = function (req, res) {
+        var consulta;
+        var pagina = 1;
+        var tamanio_pagina = 50;
 
-        var query = {};
-
-        // Si esta 
-        /**
-         * if (req.query.genre) {
-            query.genre = req.query.genre;
+        if (req.query.pagina) {
+            pagina = req.query.pagina;
         }
-         */
-        Unidad.find(query, function (err, unidades) {
+
+        if (req.query.tamanio_pagina) {
+            tamanio_pagina = req.query.tamanio_pagina;
+        }
+
+        if (req.query.buscar) {
+            var parametro_busqueda = req.query.buscar;
+            consulta = Unidad.find({ $text: { $search: parametro_busqueda } }, { score: { $meta: "textScore" } }).sort({ score: { $meta: "textScore" } });
+        } else {
+            consulta = Unidad.find();
+        }
+
+        consulta.skip(tamanio_pagina*(pagina-1)).limit(tamanio_pagina);
+
+        consulta.exec(function (err, unidades) {
 
             if (err)
                 res.status(500).send(err);
@@ -39,7 +51,7 @@ var unidadController = function (Unidad) {
     }
 
     var getUnidadesPorClasificacion = function (req, res) {
-        
+
         var query = {};
         if (req.query.clasificacion) {
             query.clase = req.query.clasificacion;

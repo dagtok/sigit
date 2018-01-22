@@ -17,7 +17,7 @@ export class UsuarioService {
   }
 
   buscarUsuario(_parametro_de_busqueda: string) {
-    const parametros = new HttpParams().set('token', _parametro_de_busqueda);
+    const parametros = new HttpParams().set('buscar', _parametro_de_busqueda);
     return this.http.get<Usuario[]>(this.API_URL + 'api/usuarios', { params: parametros });
   }
 

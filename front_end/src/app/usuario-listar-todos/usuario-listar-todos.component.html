@@ -11,12 +11,13 @@
           <a class="btn btn-primary" [routerLink]="[ '/admin/usuario/crear' ]">CREAR USUARIO</a>
         </div>
       </div>
-      <input type="text" id="buscar-usuario" name="search" placeholder="Buscar por nombre del usuario o unidad de adscripción">
+      <input type="text" id="buscar-usuario" name="search" placeholder="Buscar por nombre del usuario, e-mail, unidad de adscripción" autofocus>
     </div>
     <div class="col-sm-4 mb-3" *ngFor="let usuario of usuarios">
       <div class="card text-center">
         <div class="card-block p-2">
           <h3 class="card-title">{{ usuario.nombre }}</h3>
+          <span class="badge badge-info">{{ usuario.tipo }}</span>
           <p class="card-text">
             {{ usuario.unidad.sigla }}
           </p>

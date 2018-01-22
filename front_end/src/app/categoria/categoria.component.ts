@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Modelo, Categoria } from '../_models/index';
 import { CategoriaService } from '../_services/index';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   moduleId: module.id.toString(),
@@ -20,8 +21,12 @@ export class CategoriaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public categoriaServicio: CategoriaService) {
+    public categoriaServicio: CategoriaService,
+    private toastr: ToastsManager,
+    private _vcr: ViewContainerRef
+  ) {
     this.obtenerAccionARealizar();
+    this.toastr.setRootViewContainerRef(_vcr);
   }
 
   ngOnInit() {
@@ -49,7 +54,9 @@ export class CategoriaComponent implements OnInit {
     } else if (tmp_accion === 'eliminar') {
       this.accion = 'eliminar';
       this.categoriaServicio.eliminar(this.categoria_id).subscribe(response => {
-        this.router.navigate(['/admin/categoria/listar-todos']);
+        this.router.navigate(['/admin/categoria/listar-todos']).then(result => {
+          this.toastr.info('¡El usuario fue eliminado!.', null);
+        });
       });
     }
   }
@@ -77,7 +84,9 @@ export class CategoriaComponent implements OnInit {
     this.categoriaServicio.modificarCategoria(this.model)
       .subscribe(
       res => {
-        this.router.navigate(['/admin/categoria/listar-todos']);
+        this.router.navigate(['/admin/categoria/listar-todos']).then(result => {
+          this.toastr.info('¡La categoria fue modificada con exito!.', null);
+        });
       },
       err => {
         console.log('Error occured');

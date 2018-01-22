@@ -11,19 +11,52 @@
           <a class="btn btn-primary" [routerLink]="[ '/admin/unidad/crear' ]">CREAR UNIDAD</a>
         </div>
       </div>
-      <input type="text" id="buscar-unidad" name="search" placeholder="Buscar por nombre del usuario o unidad de adscripción">
+      <input type="text" id="buscar-unidad" name="search" placeholder="Buscar por clave ur, nombre, sigla o clasificación">
     </div>
+
     <div class="col-sm-4 mb-3" *ngFor="let unidad of unidades">
       <div class="card text-center">
         <div class="card-block p-2">
-          <h3 class="card-title">{{ unidad.clasificacion }}</h3>
+          <h3 class="card-title">{{ unidad.sigla }}</h3>
           <p class="card-text">
             {{ unidad.unidad }}
+            <br>{{ unidad.clasificacion }}
           </p>
           <a class="btn btn-primary" [routerLink]="[ '/admin/unidad/editar', unidad._id ]">Editar</a>
           <a class="btn btn-primary" [routerLink]="[ '/admin/unidad/eliminar', unidad._id ]">Eliminar</a>
         </div>
       </div>
+    </div>
+
+    <div class="col-12" *ngIf="unidades.length >= 50">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <span class="page-link">...</span>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

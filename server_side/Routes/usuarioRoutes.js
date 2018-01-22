@@ -13,7 +13,6 @@ var routes = function(Usuario){
         .post(usuarioController.login)
 
     usuarioRouter.use('/:usuarioId', function(req,res,next){
-        console.log(req.params.usuarioId);
         Usuario.findById(req.params.usuarioId, function(err,usuario){
             if(err)
                 res.status(500).send(err);
@@ -31,9 +30,7 @@ var routes = function(Usuario){
     
     usuarioRouter.route('/:usuarioId')
         .get(function(req,res){
-            console.log("Buscando Usuario");
             var returnUsuario = req.usuario.toJSON();
-
             returnUsuario.links = {};
             var newLink = 'http://' + req.headers.host + '/api/usuarios/?genre=' + returnUsuario.genre;
             returnUsuario.links.FilterByThisGenre = newLink.replace(' ', '%20');

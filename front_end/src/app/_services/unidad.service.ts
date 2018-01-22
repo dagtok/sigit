@@ -29,7 +29,7 @@ export class UnidadService {
     }
 
     buscarUnidad(_parametro_de_busqueda: string) {
-        const parametros = new HttpParams().set('token', _parametro_de_busqueda);
+        const parametros = new HttpParams().set('buscar', _parametro_de_busqueda);
         return this.http.get<Unidad[]>(this.API_URL + 'api/unidades', { params: parametros });
     }
 

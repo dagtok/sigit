@@ -1,12 +1,7 @@
 <app-encabezado-usuario></app-encabezado-usuario>
-<div class="row">
+<div class="row mb-5">
   <div class="col-12 text-center mt-5 mb-3">
     <h1>PROCESO DE VALIDACIÓN</h1>
-    <!--
-    <pre>
-      {{ solicitud | json }}
-    </pre>
-    -->
   </div>
   <div class="col-6">
     <h3 class="text-center">Unidad Requirente</h3>
@@ -65,8 +60,8 @@
     </ul>
     <div class="p-3 mb-2 bg-success text-white" *ngIf="solicitud && solicitud.autorizo && solicitud.autorizo.fecha != null">
       <h3 class="text-center">
-        <i class="fa fa-truck" aria-hidden="true"></i><br>
-        La solicitud esta lista para ser enviada a tu unidad.
+        <i class="fa fa-truck" aria-hidden="true"></i>
+        <br> La solicitud esta lista para ser enviada a tu unidad.
       </h3>
     </div>
   </div>
@@ -98,8 +93,6 @@
           </ul>
         </td>
       </tr>
-      <!--
-      -->
     </table>
   </div>
 </div>

@@ -241,3 +241,10 @@ sudo npm install @angular/{animations,common,compiler,compiler-cli,core,forms,ht
     "zone.js": "^0.8.4"
 
 npm install typescript@2.4.2 --save-exact
+
+# INDICES
+db.usuarios.createIndex({"$**":"text"});
+db.unidades.createIndex({"$**":"text"});
+db.modelos.createIndex({"$**":"text"});
+db.articulos.createIndex({"$**":"text"});
+db.pedidos.createIndex({"$**":"text"});

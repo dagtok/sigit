@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-
-// Servicio para gestion de categorias de productos
-import { ArticuloService, CategoriaService } from '../_services/index';
 import { Articulo, Categoria, Modelo } from '../_models/index';
+import { ArticuloService, CategoriaService } from '../_services/index';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-articulo',
@@ -21,7 +19,9 @@ export class ArticuloComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     public articuloServicio: ArticuloService,
-    public categoriasServicio: CategoriaService) {
+    public categoriasServicio: CategoriaService,
+    private toastr: ToastsManager,
+    private _vcr: ViewContainerRef) {
     this.categoriasServicio.obtenerNombres().subscribe(data => {
       this.categorias = data;
     }).closed;
@@ -50,7 +50,9 @@ export class ArticuloComponent implements OnInit {
     } else if (tmp_accion === 'eliminar') {
       this.accion = 'eliminar';
       this.articuloServicio.eliminar(this.articulo_id).subscribe(response => {
-        this.router.navigate(['/admin/articulo/listar-todos']);
+        this.router.navigate(['/admin/articulo/listar-todos']).then(result => {
+          this.toastr.info('¡El usuario fue eliminado!.', null);
+        });
       });
     }
   }
@@ -72,7 +74,9 @@ export class ArticuloComponent implements OnInit {
     this.articuloServicio.modificarArticulo(this.articulo)
       .subscribe(
       res => {
-        this.router.navigate(['/admin/articulo/listar-todos']);
+        this.router.navigate(['/admin/articulo/listar-todos']).then(result => {
+          this.toastr.info('¡El usuario fue modificado con exito!.', null);
+        });
       },
       err => {
         console.log('Error occured');
@@ -82,16 +86,17 @@ export class ArticuloComponent implements OnInit {
 
   crearArticulo() {
     this.articuloServicio.crearArticulo(this.articulo)
-      .subscribe(
+    .subscribe(
       res => {
-        console.log(res);
-        this.inicializarArticulo();
-        // this.onSubmit();
+        this.router.navigate(['/admin/articulo/listar-todos']).then(result => {
+          this.inicializarArticulo();
+          this.toastr.success('¡Articulo creado con exito!');
+        });
       },
       err => {
         console.log('Error occured');
       }
-      );
+    );
   }
 
   generarToken(_valor_atributo: string) {

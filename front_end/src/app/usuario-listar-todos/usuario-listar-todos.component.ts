@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { UsuarioService } from 'app/_services';
 import { Usuario } from 'app/_models';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Observable } from 'rxjs/Rx';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-usuario-listar-todos',
@@ -15,14 +15,16 @@ export class UsuarioListarTodosComponent implements OnInit {
 
   constructor(
     public usuarioService: UsuarioService,
-    private toastr: ToastsManager
+    private toastr: ToastsManager,
+    private _vcr: ViewContainerRef
   ) {
-    this.usuarioService.obtenerCatalogoUsuarios().subscribe(usuarios => {
-      this.usuarios = usuarios;
-    });
+    this.toastr.setRootViewContainerRef(_vcr);
   }
 
   ngOnInit() {
+    this.usuarioService.obtenerCatalogoUsuarios().subscribe(usuarios => {
+      this.usuarios = usuarios;
+    });
     this.inputBusquedaListener();
   }
 
@@ -40,15 +42,8 @@ export class UsuarioListarTodosComponent implements OnInit {
   }
 
   buscaProductos(_termino_de_busqueda: string) {
-    const token = this.generarToken(_termino_de_busqueda);
-    this.usuarioService.buscarUsuario(token).subscribe(data => {
+    this.usuarioService.buscarUsuario(_termino_de_busqueda).subscribe(data => {
       this.usuarios = data;
     }).closed;
   }
-
-  generarToken(_termino_de_busqueda: string) {
-    return _termino_de_busqueda.replace(/[^\w\s]/gi, '').toLowerCase().replace(/ /g, '').replace(/[aeiou]/ig, '');
-    // verificar cuando replazar numeros  .replace(/[0123456789]/ig,'') por las medidas como 10GB
-  }
-
 }

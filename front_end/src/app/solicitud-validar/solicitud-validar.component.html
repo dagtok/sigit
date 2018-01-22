@@ -2,20 +2,6 @@
 <div class="row">
     <div class="col-12 text-center mb-5 mt-4">
         <h2 class="text-center">VALIDAR SOLICITUD DE INSUMOS INFORMATICOS</h2>
-        <!-- 
-            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-            EXPANDIR
-            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-            CONTRAER
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Todos
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> Individual
-                </label>
-            </div>
-        -->
     </div>
     <div class="col-12">
         <div class="row">
@@ -26,13 +12,6 @@
                             <div *ngIf="articulo.validacion && articulo.validacion.responsable.fecha != null" class="p-3 mb-2 bg-success text-white">VALIDADO</div>
                             <div *ngIf="!articulo.validacion" class="p-3 mb-2 bg-secondary text-white">POR VALIDAR</div>
                         </td>
-                        <!--
-                        <td>
-                            <button class="mostrar-detalle">
-                                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                        -->
                         <td>
                             Nombre del articulo:
                             <br> {{ articulo.categoria }} {{ articulo.nombre }}

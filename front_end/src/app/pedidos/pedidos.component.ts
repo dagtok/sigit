@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { PedidoService } from '../_services/index';
 import { Observable } from 'rxjs/Rx';
 import { Pedido } from 'app/_models';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-pedidos',
@@ -12,7 +13,13 @@ export class PedidosComponent implements OnInit {
   pedidos: Pedido[];
   terminoDeBusqueda: string;
 
-  constructor(public pedidoService: PedidoService) { }
+  constructor(
+    public pedidoService: PedidoService,
+    private toastr: ToastsManager,
+    private _vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(_vcr);
+  }
 
   ngOnInit() {
     this.pedidoService.obtenerCatalogoPedidos().subscribe(pedidos => {
@@ -35,13 +42,8 @@ export class PedidosComponent implements OnInit {
   }
 
   buscaPedidos(_termino_de_busqueda: string) {
-    const token = this.generarToken(_termino_de_busqueda);
-    this.pedidoService.buscarPedido(token).subscribe(data => {
+    this.pedidoService.buscarPedido(_termino_de_busqueda).subscribe(data => {
       this.pedidos = data;
     }).closed;
-  }
-
-  generarToken(_termino_de_busqueda: string) {
-    return _termino_de_busqueda.replace(/[^\w\s]/gi, '').toLowerCase().replace(/ /g, '').replace(/[aeiou]/ig, '');
   }
 }

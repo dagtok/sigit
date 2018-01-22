@@ -17,13 +17,13 @@ export class CategoriaService {
   }
 
   public modificarCategoria(_categoria: Modelo) {
-    return this.http.patch(this.API_URL + 'api/categorias/' + _categoria._id, _categoria, {
+    return this.http.patch(this.API_URL + 'api/modelos/' + _categoria._id, _categoria, {
       headers: new HttpHeaders().set('Authorization_dagtok', 'some-token')
     });
   }
 
   buscarCategoria(_parametro_de_busqueda: string) {
-    const parametros = new HttpParams().set('token', _parametro_de_busqueda);
+    const parametros = new HttpParams().set('buscar', _parametro_de_busqueda);
     return this.http.get<Modelo[]>(this.API_URL + 'api/modelos', { params: parametros });
   }
 

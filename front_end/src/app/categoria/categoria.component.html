@@ -6,7 +6,7 @@
             <h1 class="mb-4 mt-4" *ngIf="accion === 'editar'">Editar Categoría.</h1>
         </div>
         <div class="offset-2 col-8" *ngIf="model">
-            <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+            <form #heroForm="ngForm">
                 <div class="form-group">
                     <label for="categoria">Nombre de la categoría</label>
                     <input type="text" class="form-control" id="categoria" name="categoria" (ngModelChange)="asignarTokenACategoria($event)"

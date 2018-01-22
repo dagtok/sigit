@@ -10,7 +10,6 @@ var routes = function(Pedido){
         .get(pedidoController.get);
 
     pedidoRouter.use('/:pedidoId', function(req,res,next){
-        console.log(req.params.pedidoId);
         Pedido.findById(req.params.pedidoId, function(err,pedido){
             if(err)
                 res.status(500).send(err);
@@ -28,7 +27,6 @@ var routes = function(Pedido){
     
     pedidoRouter.route('/:pedidoId')
         .get(function(req,res){
-            // console.log("Buscando Pedido");
             var returnPedido = req.pedido.toJSON();
 
             returnPedido.links = {};
@@ -60,7 +58,6 @@ var routes = function(Pedido){
                 req.pedido[p] = req.body[p];
             }
             
-            //console.log(req.pedido.autorizo.fecha);
             req.pedido.save(function(err){
                 if(err)
                     res.status(500).send(err);

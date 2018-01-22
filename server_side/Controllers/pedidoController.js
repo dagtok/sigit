@@ -48,19 +48,18 @@ var pedidoController = function (Pedido) {
     }
 
     var get = function (req, res) {
-        var query = {};
-        // Si el usuario busca por genero 
-        // console.log(req.query.clave_ur);
-
+        var consulta;
+        
         if (req.query.clave_ur) {
-            query = {
-                'unidad.clave_ur': req.query.clave_ur
-            };
+            consulta = Pedido.find( { 'unidad.clave_ur': req.query.clave_ur } );
+        } else if (req.query.buscar) {
+            var parametro_busqueda = req.query.buscar;
+            consulta = Pedido.find({ $text: { $search: parametro_busqueda } }, { score: { $meta: "textScore" } }).sort({ score: { $meta: "textScore" } });
+        } else {
+            consulta = Pedido.find();
         }
 
-        console.log(query);
-
-        Pedido.find(query, function (err, pedidos) {
+        consulta.exec(function (err, pedidos) {
 
             if (err)
                 res.status(500).send(err);

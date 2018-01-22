@@ -14,8 +14,6 @@ var routes = function (Unidad) {
         .get(unidadController.getUnidadesPorClasificacion);
 
     unidadRouter.use('/:unidadId', function (req, res, next) {
-        // console.log('unidadId');
-        // console.log(req.params.unidadId);
         Unidad.findById(req.params.unidadId, function (err, unidad) {
             if (err)
                 res.status(500).send(err);
@@ -31,7 +29,6 @@ var routes = function (Unidad) {
 
     unidadRouter.route('/:unidadId')
         .get(function (req, res) {
-            console.log("Buscando Unidad");
             var returnUsuario = req.unidad.toJSON();
 
             returnUsuario.links = {};
@@ -79,19 +76,6 @@ var routes = function (Unidad) {
             });
         });
 
-    /*
-unidadRouter.route('/:unidadId')
-    .get(function(req,res){
-        console.log("Buscando Unidad");
-        var returnUnidad = req.unidad.toJSON();
-
-        returnUnidad.links = {};
-        var newLink = 'http://' + req.headers.host + '/api/unidades/?genre=' + returnUnidad.genre;
-        returnUnidad.links.FilterByThisGenre = newLink.replace(' ', '%20');
-        res.json(returnUnidad);
-
-    });
-*/
     return unidadRouter;
 };
 

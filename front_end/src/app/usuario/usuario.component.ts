@@ -4,7 +4,6 @@ import { Usuario, UnidadClasificacion, Unidad } from '../_models/index';
 import { UnidadService, UsuarioService } from '../_services/index';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
-
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -24,9 +23,9 @@ export class UsuarioComponent implements OnInit {
     public unidadService: UnidadService,
     private toastr: ToastsManager,
     private _vcr: ViewContainerRef) {
-    this.obtenerClasificacionUnidades();
-    this.obtenerAccionARealizar();
-    this.toastr.setRootViewContainerRef(_vcr);
+      this.obtenerClasificacionUnidades();
+      this.obtenerAccionARealizar();
+      this.toastr.setRootViewContainerRef(_vcr);
   }
 
   // Procesa los parametros de la URL para saber si el usuario intenta crear o editar
@@ -53,7 +52,9 @@ export class UsuarioComponent implements OnInit {
     } else if (tmp_accion === 'eliminar') {
       this.accion = 'eliminar';
       this.usuarioService.eliminar(this.usuario_id).subscribe(response => {
-        this.router.navigate(['/admin/usuario/listar-todos']);
+        this.router.navigate(['/admin/usuario/listar-todos']).then(result => {
+          this.toastr.info('¡El usuario fue eliminado!.', null);
+        });
       });
     }
   }
@@ -74,8 +75,9 @@ export class UsuarioComponent implements OnInit {
     this.usuarioService.modificarUsuario(this.usuario)
       .subscribe(
       res => {
-        this.toastr.info('¡Usuario modificado con exito!.', '¡Exito!');
-        //this.router.navigate(['/admin/usuario/listar-todos']);
+        this.router.navigate(['/admin/usuario/listar-todos']).then(result => {
+          this.toastr.info('¡El usuario fue modificado con exito!.', null);
+        });
       },
       err => {
         console.log('Error occured');
@@ -117,12 +119,16 @@ export class UsuarioComponent implements OnInit {
   crearUsuario() {
     this.usuarioService.crearUsuario(this.usuario).subscribe(
       res => {
-        this.inicializarUsuario();
-        // this.router.navigate(['/admin/usuario/listar-todos']);
-        this.toastr.success('¡Usuario creado con exito!.', '¡Exito!');
+        this.router.navigate(['/admin/usuario/listar-todos']).then(result => {
+          this.inicializarUsuario();
+          this.toastr.success('¡Usuario creado con exito!');
+        });
       },
       err => {
-        console.log(err);
+        this.router.navigate(['/admin/usuario/listar-todos']).then(result => {
+          this.inicializarUsuario();
+          this.toastr.error('El usuario ya existe');
+        });
       }
     );
   }

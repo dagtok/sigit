@@ -14,14 +14,16 @@ var modeloController = function (Modelo) {
     }
 
     var get = function (req, res) {
-
-        var query = {};
-
-        // Si esta 
-        if (req.query.genre) {
-            query.genre = req.query.genre;
+        var consulta;
+        
+        if (req.query.buscar) {
+            var parametro_busqueda = req.query.buscar;
+            consulta = Modelo.find({ $text: { $search: parametro_busqueda } }, { score: { $meta: "textScore" } }).sort({ score: { $meta: "textScore" } });
+        } else {
+            consulta = Modelo.find();
         }
-        Modelo.find(query, function (err, modelos) {
+
+        consulta.exec(function (err, modelos) {
 
             if (err)
                 res.status(500).send(err);

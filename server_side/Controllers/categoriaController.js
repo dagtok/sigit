@@ -14,15 +14,16 @@ var categoriaController = function(Categoria){
     }
 
     var get = function(req,res){
-
-        var query = {};
-
-        // Si esta 
-        if(req.query.genre)
-        {
-            query.genre = req.query.genre;
+        var consulta;
+        
+        if (req.query.buscar) {
+            var parametro_busqueda = req.query.buscar;
+            consulta = Categoria.find({ $text: { $search: parametro_busqueda } }, { score: { $meta: "textScore" } }).sort({ score: { $meta: "textScore" } });
+        } else {
+            consulta = Categoria.find();
         }
-        Categoria.find(query, function(err,categorias){
+
+        consulta.exec(query, function(err,categorias){
 
             if(err)
                 res.status(500).send(err);

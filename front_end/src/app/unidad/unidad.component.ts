@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { Unidad, UnidadClasificacion } from '../_models/index';
 import { UnidadService } from '../_services/index';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 
 @Component({
@@ -21,10 +21,15 @@ export class UnidadComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public unidadService: UnidadService) {
+    public unidadService: UnidadService,
+    private toastr: ToastsManager,
+    private _vcr: ViewContainerRef
+  ) {
     this.obtenerClasificacionUnidades();
     this.obtenerAccionARealizar();
+    this.toastr.setRootViewContainerRef(_vcr);
   }
+
   obtenerClasificacionUnidades() {
     this.unidadService.obtenerClasificaciones().subscribe(data => {
       this.clasificacion_unidades = data;
@@ -54,7 +59,9 @@ export class UnidadComponent implements OnInit {
     } else if (tmp_accion === 'eliminar') {
       this.accion = 'eliminar';
       this.unidadService.eliminar(this.unidad_id).subscribe(response => {
-        this.router.navigate(['/admin/unidad/listar-todos']);
+        this.router.navigate(['/admin/unidad/listar-todos']).then(result => {
+          this.toastr.info('¡La unidad fue eliminada!.', null);
+        });
       });
     }
   }
@@ -91,7 +98,9 @@ export class UnidadComponent implements OnInit {
     this.unidadService.modificarUnidad(this.unidad)
       .subscribe(
         res => {
-          this.router.navigate(['/admin/unidad/listar-todos']);
+          this.router.navigate(['/admin/unidad/listar-todos']).then(result => {
+            this.toastr.info('¡La Unidad fue modificada con exito!.', null);
+          });
         },
         err => {
           console.log('Error occured');
@@ -99,27 +108,13 @@ export class UnidadComponent implements OnInit {
       );
   }
 
-  /*
-  asignarUnidadAUnidad(_unidad_event) {
-    const index = _unidad_event.target.selectedIndex;
-    const unidad: Unidad = this.unidades[index];
-    //console.log(unidad);
-    this.unidad.unidad._id = unidad._id;
-    this.unidad.unidad.clave_ur = unidad.clave_ur;
-    this.unidad.unidad.direccion = '';
-    this.unidad.unidad.nombre = unidad.unidad;
-    this.unidad.unidad.clasificacion = unidad.clase;
-    this.unidad.unidad.sigla = unidad.sigla;
-
-    this.unidad.tipo = 'unidad';
-    this.unidad.status = 'activo';
-  }
-  */
   crearUnidad() {
     this.unidadService.crearUnidad(this.unidad).subscribe(
       res => {
-        console.log(res);
-        this.inicializarUnidad();
+        this.router.navigate(['/admin/unidad/listar-todos']).then(result => {
+          this.inicializarUnidad();
+          this.toastr.success('¡La Unidad fue creada con exito!.', null);
+        });
       },
       err => {
         console.log(err);

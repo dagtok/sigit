@@ -18,8 +18,8 @@ export class PedidoService {
   }
 
   buscarPedido(_parametro_de_busqueda: string) {
-    const parametros = new HttpParams().set('token', _parametro_de_busqueda);
-    return this.http.get<Pedido[]>(this.API_URL + 'api/usuarios', { params: parametros });
+    const parametros = new HttpParams().set('buscar', _parametro_de_busqueda);
+    return this.http.get<Pedido[]>(this.API_URL + 'api/pedidos', { params: parametros });
   }
 
   inicializarCarrito() {
@@ -27,27 +27,27 @@ export class PedidoService {
   }
 
   obtenerCatalogoProductos() {
-    return this.http.get<Articulo[]>(this.API_URL + 'articulos');
+    return this.http.get<Articulo[]>(this.API_URL + 'api/articulos');
   }
 
   obtenerCatalogoPedidos() {
-    return this.http.get<Pedido[]>(this.API_URL + 'pedidos');
+    return this.http.get<Pedido[]>(this.API_URL + 'api/pedidos');
   }
 
   obtenerPedidosPorUnidad(_unidad_id: string) {
-    // return this.http.get<Pedido[]>(this.API_URL + 'pedidos');
+    // return this.http.get<Pedido[]>(this.API_URL + 'api/pedidos');
     const parametros = new HttpParams().set('clave_ur', _unidad_id);
-    return this.http.get<Pedido[]>(this.API_URL + 'pedidos', { params: parametros });
+    return this.http.get<Pedido[]>(this.API_URL + 'api/pedidos', { params: parametros });
   }
 
   obtenerPedidoPorId(_pedido_id: string) {
-    return this.http.get<Pedido>(this.API_URL + 'pedidos/' + _pedido_id);
+    return this.http.get<Pedido>(this.API_URL + 'api/pedidos/' + _pedido_id);
   }
 
   // Buscar producto
   buscarProductoEnCatalogo(_parametro_de_busqueda: string) {
     const parametros = new HttpParams().set('token', _parametro_de_busqueda);
-    return this.http.get<Articulo[]>(this.API_URL + 'articulos', { params: parametros });
+    return this.http.get<Articulo[]>(this.API_URL + 'api/articulos', { params: parametros });
   }
 
   // Funcionalidades basicas de Carrito
@@ -97,6 +97,6 @@ export class PedidoService {
     this.articulosCarrito.splice(_posicion, 1);
   }
   registrarPedido(_pedido: Pedido) {
-    return this.http.post<Pedido>(this.API_URL + 'pedidos', _pedido);
+    return this.http.post<Pedido>(this.API_URL + 'api/pedidos', _pedido);
   }
 }

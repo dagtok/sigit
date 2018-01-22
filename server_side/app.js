@@ -4,7 +4,6 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var db;
-// console.log('Hello');
 
 mongoose.Promise = global.Promise;
 
