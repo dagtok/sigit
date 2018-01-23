@@ -87,7 +87,8 @@ pm2 start app.js --name sigit_backend
 sudo cat /etc/nginx/sites-available/default
 
 #liberar cambios a produccion
-    ng build
+    #ng build
+    ng b -prod
     ssh root@104.236.191.171
     cd
     cd sigit
